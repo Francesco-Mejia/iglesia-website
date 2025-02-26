@@ -1,0 +1,20 @@
+[
+    {
+      "title": "Conferencia de Avivamiento",
+      "date": "2024-03-15",
+      "description": "Un tiempo de alabanza y enseñanza inspiradora.",
+      "banner": "/images/background.jpg"
+    },
+    {
+      "title": "Cena de la Amistad",
+      "date": "2024-04-01",
+      "description": "Un evento para compartir y construir comunidad.",
+      "banner": "/images/background2.jpg"
+    },
+    {
+      "title": "Vigilia de Oración",
+      "date": "2024-05-23",
+      "description": "Una vigilia para y construir en comunidad.",
+      "banner": "/images/background2.jpg"
+    }
+]

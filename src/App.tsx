@@ -1,25 +1,66 @@
 import React from 'react';
-import logo from './logo.svg';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App() {
+import { Header } from './Components/Header';
+import { Presentacion } from './Components/Presentacion';
+import { LiveStream } from './Components/LiveStream';
+import { Schedule } from './Components/Schedule';
+import { Map } from './Components/Map';
+import { Footer } from './Components/Footer';
+import { Events } from './Components/Events';
+import { News } from './Components/News';
+
+function App() 
+{
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Row>
+        <Col>
+          <Header />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Presentacion />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Schedule />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Map />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Events/>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <News />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <LiveStream/>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Footer />
+        </Col>
+      </Row>
+    </>
+      
+    
   );
 }
 

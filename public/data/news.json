@@ -1,0 +1,14 @@
+[
+    {
+      "title": "Nuevo programa de jóvenes",
+      "date": "2024-02-20",
+      "content": "¡Únete a nuestro nuevo programa de jóvenes!",
+      "image": "/images/background2.jpg"
+    },
+    {
+      "title": "Aniversario de la iglesia",
+      "date": "2024-03-10",
+      "content": "¡Celebramos nuestro aniversario con un servicio especial!",
+      "image": "/images/background.jpg"
+    }
+]
