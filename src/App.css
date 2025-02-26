@@ -178,28 +178,25 @@ footer {
 
 /*Ubicacion*/
 .map-container {
-  height: 590px;
-  width: 500px;
-  margin: 10px auto;
-  overflow: hidden;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.562);
-  background-color: #f0f0f0;
+  height: 800px;
+  margin: 60px auto;
+  width: 1800px;
 }
 
-.map-container > div {
-  height: 100%;
+.image-col {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
 }
 
-#mapa h2 {
-  color: #fff;
-  text-align: center;
-  background-color: #000000;
-  padding: 10px;
-  border-radius: 10px 10px 0 0;
+.image-col img {
+  max-width: 600px;
+  height: auto;
 }
 
 
-
+/*Noticias*/
 .news-container {
   width: 80%;
   margin: 20px auto;

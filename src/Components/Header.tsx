@@ -6,10 +6,10 @@ export function Header() {
   return (
     <header>
         <Navbar bg="transparent" expand="lg">
-        <Container fluid> {/* Container fluid para ocupar todo el ancho */}
+        <Container fluid> 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center"> {/* Centrar elementos */}
-            <Nav> {/* Elimina ml-auto */}
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
+            <Nav> 
               <Nav.Link href="#transmisiones">Transmisiones en vivo</Nav.Link>
               <Nav.Link href="#horarios">Horarios</Nav.Link>
               <Nav.Link href="#mapa">Ubicación</Nav.Link>
