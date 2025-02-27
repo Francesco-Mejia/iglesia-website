@@ -14,8 +14,8 @@ header {
 }
 
 .header-logo {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   margin-right: 20px;
 }
 
@@ -77,40 +77,52 @@ header {
 
 /* Eventos */
 .events-container {
-  width: 80%;
+  background-color: black;
+  color: white;
+  padding: 20px;
   margin: 20px auto;
+  width: 100%;
+}
+
+.events-slider-container {
+  padding: 20px;
+}
+
+.event-item {
+  text-align: center;
+  padding: 20px;
+}
+
+.event-banner {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.event-details {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.event-title {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+.event-date {
+  font-size: 1.5em;
+  color: #ccc;
+  margin-bottom: 20px;
 }
 
 .slick-prev:before,
 .slick-next:before {
-  font-size: 30px;
-  color: #333;
+  color: white;
+  font-size: 25px;
 }
 
-.events-container .slick-slide > div {
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.events-container .slick-slide img {
-  max-width: 100%;
-  height: auto;
-}
-
-
-.events-container .slick-slide > div {
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #fff;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.slick-dots li button:before {
-  font-size: 10px;
-  color: #333;
-}
 
 /* General Styles */
 body {
@@ -165,7 +177,7 @@ footer {
 
 .schedule-row {
   display: flex;
-  border-bottom: 1px solid #333; /* Borde inferior gris oscuro */
+  border-bottom: 1px solid #333;
 }
 
 .schedule-cell {

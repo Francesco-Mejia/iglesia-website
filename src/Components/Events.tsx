@@ -35,25 +35,29 @@ export function Events ()
     dots: true,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3, // Ajusta este valor según tus necesidades
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 8000, // Ajusta este valor según tu preferencia
+    autoplaySpeed: 8000,
   };
 
   return (
     <div className="events-container" id='eventos'>
-      <h2>Próximos eventos</h2>
-      <Slider {...settings}>
-        {events.map((event, index) => (
-          <div key={event.title}>
-            <h3>{event.title}</h3>
-            <img src={event.banner} alt={event.title} />
-            <p>{event.date}</p>
-            <p>{event.description}</p>
-          </div>
-        ))}
-      </Slider>
-    </div>
+            <h2>Eventos</h2>
+            <div className="events-slider-container">
+                <Slider {...settings}>
+                    {events.map((event, index) => (
+                        <div key={event.title} className="event-item">
+                            <img src={event.banner} alt={event.title} className="event-banner" />
+                            <div className="event-details">
+                                <h3>{event.title}</h3>
+                                <p className="event-date">{event.date}</p>
+                                <p className="event-description">{event.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                </Slider>
+            </div>
+        </div>
   );
 };

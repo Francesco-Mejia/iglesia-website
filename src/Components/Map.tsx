@@ -33,7 +33,7 @@ export function Map()
   }, []);
 
   return isLoaded ? (
-    <Row className="map-container">
+    <Row className="map-container" id="mapa">
       <Col md={6} className="map-col"> 
         <GoogleMap
           mapContainerStyle={containerStyle}
