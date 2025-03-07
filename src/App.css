@@ -134,36 +134,12 @@ h1, h2 {
   text-align: center;
 }
 
+/* Footer*/
 footer {
   background-color: #333;
   color: #fff;
-  padding: 30px;
+  padding: 20px;
   text-align: center;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.social-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 20px;
-}
-
-.social-icon img {
-  width: 50px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.social-icon p {
-  font-size: 12px;
-  margin-top: 5px;
-  color: #fff;
 }
 
 /*Horario*/
@@ -203,7 +179,7 @@ footer {
 }
 
 .image-col img {
-  max-width: 600px;
+  max-width: 500px;
   height: auto;
 }
 
@@ -244,4 +220,70 @@ footer {
 
 .news-item h3 {
   margin-top: 0;
+}
+
+/* Contact*/
+.contact-container {
+  text-align: left; /* Alinea el contenido a la izquierda */
+  padding: 110px;
+  background-image: url('/public/images/contact-us-background.jpg'); /* Reemplaza con la ruta de tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+}
+
+.contact-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.social-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.social-icon img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+/*Donaciones*/
+.donations-container {
+  text-align: center;
+  padding: 40px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.donation-amount {
+  margin-bottom: 20px;
+}
+
+.donation-amount label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.donation-amount input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 150px;
+  text-align: right;
 }

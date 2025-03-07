@@ -15,7 +15,8 @@ export function Header() {
               <Nav.Link href="#mapa">Ubicación</Nav.Link>
               <Nav.Link href="#eventos">Eventos</Nav.Link>
               <Nav.Link href="#noticias">Noticias</Nav.Link>
-              <Nav.Link href="#footer">Contacto</Nav.Link>
+              <Nav.Link href="#donaciones">Donaciones</Nav.Link>
+              <Nav.Link href="#contacto">Contacto</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

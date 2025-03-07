@@ -13,6 +13,8 @@ import { Map } from './Components/Map';
 import { Footer } from './Components/Footer';
 import { Events } from './Components/Events';
 import { News } from './Components/News';
+import {Donations} from './Components/Donations';
+import { Contact } from './Components/Contact';
 
 function App() 
 {
@@ -46,6 +48,16 @@ function App()
       <Row>
         <Col>
           <News />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Contact />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Donations />
         </Col>
       </Row>
       <Row>

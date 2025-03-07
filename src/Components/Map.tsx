@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Image } from 'react-bootstrap';
+import { Row, Col, Image, Button } from 'react-bootstrap';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
 const containerStyle = {
@@ -46,7 +46,9 @@ export function Map()
         </GoogleMap>
       </Col>
       <Col md={6} className="image-col">
-        <Image src="/images/map_icon.png" alt="Imagen de la iglesia" />
+        <Button variant='light' href='#footer'>
+          <Image src="/images/map_icon.png" alt="Imagen de la iglesia" />
+        </Button>
       </Col>
     </Row>
   ) : <></>;

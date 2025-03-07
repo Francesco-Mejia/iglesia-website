@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-interface NewsItem {
+interface NewsItem 
+{
     title: string;
     date: string;
     content: string;
@@ -21,13 +22,6 @@ export function News()
         .then(data => setNews(data));
     }
   }, []);
-
-  const handleNewsUpdate = (index: number, updatedNewsItem: NewsItem) => {
-    const newNews = [...news];
-    newNews[index] = updatedNewsItem;
-    setNews(newNews);
-    localStorage.setItem('news', JSON.stringify(newNews));
-  };
 
   return (
     <div id='noticias' className="news-container">
