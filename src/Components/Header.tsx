@@ -9,14 +9,14 @@ export function Header() {
         <Container fluid> 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
-            <Nav> 
-              <Nav.Link href="#transmisiones">Transmisiones en vivo</Nav.Link>
+            <Nav>  
               <Nav.Link href="#horarios">Horarios</Nav.Link>
               <Nav.Link href="#mapa">Ubicación</Nav.Link>
               <Nav.Link href="#eventos">Eventos</Nav.Link>
               <Nav.Link href="#noticias">Noticias</Nav.Link>
-              <Nav.Link href="#donaciones">Donaciones</Nav.Link>
               <Nav.Link href="#contacto">Contacto</Nav.Link>
+              <Nav.Link href="#donaciones">Donaciones</Nav.Link>
+              <Nav.Link href="#transmisiones">Transmisiones en vivo</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

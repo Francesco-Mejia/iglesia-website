@@ -10,7 +10,7 @@ export function Donations()
   };
 
   return (
-    <div className="donations-container">
+    <div className="donations-container" id="donaciones">
       <h2>Apoya nuestra misión</h2>
       <p>Tu donación nos ayuda a seguir compartiendo el amor de Cristo y a servir a nuestra comunidad.</p>
       <div className="donation-amount">

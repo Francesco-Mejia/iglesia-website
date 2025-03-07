@@ -29,6 +29,14 @@ export function Contact() {
         </div>
         <div className="social-icon">
           <img
+            src="/images/youtube-icon.png"
+            alt="YouTube"
+            onClick={() => openYouTubeChannel('https://www.youtube.com/@HectorLuisVente/featured')}
+          />
+          <p>YouTube</p>
+        </div>
+        <div className="social-icon">
+          <img
             src="/images/facebook.png"
             alt="Facebook Iglesia"
             onClick={() => openFacebookPage('https://www.facebook.com/egliselerestedesagrace/?locale=es_LA')}
@@ -42,14 +50,6 @@ export function Contact() {
             onClick={() => openFacebookPage('https://www.facebook.com/HectorLuisVente')}
           />
           <p>Facebook Pastor</p>
-        </div>
-        <div className="social-icon">
-          <img
-            src="/images/youtube.jpg"
-            alt="YouTube"
-            onClick={() => openYouTubeChannel('https://www.youtube.com/@HectorLuisVente/featured')}
-          />
-          <p>YouTube</p>
         </div>
       </div>
     </div>

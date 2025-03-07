@@ -224,9 +224,14 @@ footer {
 
 /* Contact*/
 .contact-container {
-  text-align: left; /* Alinea el contenido a la izquierda */
-  padding: 110px;
-  background-image: url('/public/images/contact-us-background.jpg'); /* Reemplaza con la ruta de tu imagen */
+  text-align: left;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 55vh;
+  padding: 110px; 
+  background-image: url('/public/images/contact-us-background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -234,16 +239,13 @@ footer {
 }
 
 .contact-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
+  padding: 20px;
+  margin-bottom: 50px;
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
 }
 
 .social-icon {
@@ -254,8 +256,8 @@ footer {
 }
 
 .social-icon img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   margin-bottom: 5px;
 }
