@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export function Contact() {
+  const { t } = useTranslation();
+
   const openFacebookPage = (url: string) => {
     window.open(url, '_blank');
   };
@@ -16,16 +19,15 @@ export function Contact() {
   return (
     <div className="contact-container" id="contacto">
       <div className="contact-header">
-        <h2>Contáctanos</h2>
+        <h2>{t('contact.title')}</h2>
       </div>
       <div className="social-icons">
         <div className='social-icon'>
             <img 
               src='/images/email-icon.png' 
-              alt="Correo electrónico" 
+              alt="Email" 
               onClick={() => openEmailClient('scristosalva@hotmail.fr')}
             />
-            <p>scristosalva@hotmail.fr</p>
         </div>
         <div className="social-icon">
           <img
@@ -33,23 +35,13 @@ export function Contact() {
             alt="YouTube"
             onClick={() => openYouTubeChannel('https://www.youtube.com/@HectorLuisVente/featured')}
           />
-          <p>YouTube</p>
         </div>
         <div className="social-icon">
           <img
             src="/images/facebook.png"
-            alt="Facebook Iglesia"
+            alt="Facebook"
             onClick={() => openFacebookPage('https://www.facebook.com/egliselerestedesagrace/?locale=es_LA')}
           />
-          <p>Facebook Iglesia</p>
-        </div>
-        <div className="social-icon">
-          <img
-            src="/images/facebook.png"
-            alt="Facebook Pastor"
-            onClick={() => openFacebookPage('https://www.facebook.com/HectorLuisVente')}
-          />
-          <p>Facebook Pastor</p>
         </div>
       </div>
     </div>

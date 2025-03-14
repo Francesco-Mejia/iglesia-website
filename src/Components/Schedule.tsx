@@ -1,10 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export function Schedule() {
+  const { t } = useTranslation();
+
   const schedule = [
-    { day: 'Miércoles', time: '18:45', languages: 'Francés | Español' },
-    { day: 'Domingo (culto devocional)', time: '10:00', languages: 'Francés | Español' },
-    { day: 'Domingo (culto devocional)', time: '16:45', languages: 'Francés | Español' },
+    { day: t('schedule.wednesday'), time: '18:45', languages: t('schedule.languages') },
+    { day: t('schedule.sunday'), time: '10:00', languages: t('schedule.languages') },
+    { day: t('schedule.sunday'), time: '16:45', languages: t('schedule.languages') },
   ];
 
   return (

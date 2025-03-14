@@ -1,8 +1,16 @@
 // Header.tsx
 import React from 'react';
 import { Navbar, Container, Nav, Image } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 export function Header() {
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'es' ? 'fr' : 'es';
+    i18n.changeLanguage(newLang);
+  };
+
   return (
     <header>
         <Navbar bg="transparent" expand="lg">
@@ -10,13 +18,21 @@ export function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
             <Nav>  
-              <Nav.Link href="#horarios">Horarios</Nav.Link>
-              <Nav.Link href="#mapa">Ubicación</Nav.Link>
-              <Nav.Link href="#eventos">Eventos</Nav.Link>
-              <Nav.Link href="#noticias">Noticias</Nav.Link>
-              <Nav.Link href="#contacto">Contacto</Nav.Link>
-              <Nav.Link href="#donaciones">Donaciones</Nav.Link>
-              <Nav.Link href="#transmisiones">Transmisiones en vivo</Nav.Link>
+              <Nav.Link href="#horarios">{t('header.schedule')}</Nav.Link>
+              <Nav.Link href="#nosotros">{t('header.about')}</Nav.Link>
+              <Nav.Link href="#mapa">{t('header.location')}</Nav.Link>
+              <Nav.Link href="#eventos">{t('header.events')}</Nav.Link>
+              <Nav.Link href="#noticias">{t('header.news')}</Nav.Link>
+              <Nav.Link href="#contacto">{t('header.contact')}</Nav.Link>
+              <Nav.Link href="#donaciones">{t('header.donations')}</Nav.Link>
+              <Nav.Link href="#transmisiones">{t('header.livestream')}</Nav.Link>
+              <button 
+                onClick={toggleLanguage}
+                className="ms-3 px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors border-0"
+                style={{ backgroundColor: '#56c4cc', color: 'white' }}
+              >
+                {i18n.language === 'es' ? 'Français' : 'Español'}
+              </button>
             </Nav>
           </Navbar.Collapse>
         </Container>

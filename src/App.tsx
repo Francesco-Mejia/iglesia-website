@@ -5,6 +5,8 @@ import { Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
+import { useTranslation } from 'react-i18next';
+import './i18n/i18n.js';
 import { Header } from './Components/Header';
 import { Presentacion } from './Components/Presentacion';
 import { LiveStream } from './Components/LiveStream';
@@ -13,8 +15,9 @@ import { Map } from './Components/Map';
 import { Footer } from './Components/Footer';
 import { Events } from './Components/Events';
 import { News } from './Components/News';
-import {Donations} from './Components/Donations';
+import { Donations } from './Components/Donations';
 import { Contact } from './Components/Contact';
+import { AboutUs } from './Components/AboutUs';
 
 function App() 
 {
@@ -33,6 +36,11 @@ function App()
       <Row>
         <Col>
           <Schedule />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <AboutUs />
         </Col>
       </Row>
       <Row>
@@ -71,8 +79,6 @@ function App()
         </Col>
       </Row>
     </>
-      
-    
   );
 }
 

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export function LiveStream() 
 {
   const [liveStreamUrl, setLiveStreamUrl] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null); 
+  const { t } = useTranslation();
 
   useEffect(() => {
     const apiKey = 'AIzaSyD-9Wz2_OhuI_ACvFWYICgbswflivanOmE';
@@ -43,9 +45,9 @@ export function LiveStream()
 
   return (
     <div id='transmisiones'>
-      <h2>Transmisión en vivo</h2>
+      <h2>{t('livestream.title')}</h2>
       {isLoading ? (
-        <p>Cargando transmisión en vivo...</p>
+        <p>{t('livestream.loading')}</p>
       ) : error ? (
         <p>{error}</p>
       ) : liveStreamUrl ? (
@@ -59,7 +61,7 @@ export function LiveStream()
           allowFullScreen
         ></iframe>
       ) : (
-        <p>No hay transmisión en vivo en este momento.</p>
+        <p>{t('livestream.noStream')}</p>
       )}
     </div>
   );

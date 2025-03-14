@@ -1,0 +1,62 @@
+{
+    "title": "Eglise Le Reste De Sa Grace",
+    "aboutUs": "À propos de nous",
+    "contact": "Contact",
+    "mission": "Mission",
+    "vision": "Vision",
+    "values": "Valeurs",
+    "header": {
+      "schedule": "Horaires",
+      "about": "À propos",
+      "location": "Emplacement",
+      "events": "Événements",
+      "news": "Actualités",
+      "contact": "Contact",
+      "donations": "Dons",
+      "livestream": "Direct"
+    },
+    "about": {
+      "mission": {
+        "title": "Mission",
+        "text": "Notre mission est de partager le message d'espoir et de salut à travers la Parole de Dieu, et d'aider les gens à grandir dans leur relation avec Jésus."
+      },
+      "vision": {
+        "title": "Vision",
+        "text": "Notre vision est d'être une communauté de foi qui impacte positivement notre société, en étant un phare de lumière et d'amour dans le monde."
+      },
+      "values": {
+        "title": "Valeurs",
+        "text": "Nos valeurs fondamentales sont l'amour de Dieu et du prochain, l'intégrité, l'humilité, le service et l'engagement envers la vérité."
+      }
+    },
+    "presentation": {
+      "message": "Trouvez la paix et l'amour inconditionnel que seul le Christ peut donner.",
+      "verse": "Car Dieu a tant aimé le monde qu'il a donné son Fils unique, afin que quiconque croit en lui ne périsse point, mais qu'il ait la vie éternelle. - Jean 3:16",
+      "invitation": "Voulez-vous en savoir plus sur Jésus ? Nous vous invitons à nous rendre visite !"
+    },
+    "schedule": {
+      "wednesday": "Mercredi",
+      "sunday": "Dimanche (culte)",
+      "languages": "Français | Espagnol"
+    },
+    "events": {
+      "title": "Événements"
+    },
+    "news": {
+      "title": "Dernières actualités"
+    },
+    "contact": {
+      "title": "Contactez-nous"
+    },
+    "donations": {
+      "title": "Soutenez notre mission",
+      "description": "Votre don nous aide à continuer à partager l'amour du Christ et à servir notre communauté.",
+      "amount": "Montant du don (CAD) :",
+      "success": "Transaction complétée par"
+    },
+    "livestream": {
+      "title": "Direct",
+      "loading": "Chargement du direct...",
+      "noStream": "Pas de direct en ce moment."
+    }
+  }

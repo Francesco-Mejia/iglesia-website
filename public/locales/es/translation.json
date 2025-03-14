@@ -1,0 +1,59 @@
+{
+    "title": "Eglise Le Reste De Sa Grace",
+    "aboutUs": "Sobre Nosotros",
+    "contact": "Contacto",
+    "mission": "Misión",
+    "vision": "Visión",
+    "values": "Valores",
+    "header": {
+      "schedule": "Horarios",
+      "about": "Sobre nosotros",
+      "location": "Ubicación",
+      "events": "Eventos",
+      "news": "Noticias",
+      "contact": "Contacto",
+      "donations": "Donaciones",
+      "livestream": "Transmisiones en vivo"
+    },
+    "about": {
+      "mission": {
+        "title": "Misión",
+        "text": "Nuestra misión es compartir el mensaje de esperanza y salvación a través de la Palabra de Dios, y ayudar a las personas a crecer en su relación con Jesús."
+      },
+      "vision": {
+        "title": "Visión",
+        "text": "Nuestra visión es ser una comunidad de fe que impacta positivamente a nuestra sociedad, siendo un faro de luz y amor en el mundo."
+      },
+      "values": {
+        "title": "Valores",
+        "text": "Nuestros valores fundamentales son el amor a Dios y al prójimo, la integridad, la humildad, el servicio y el compromiso con la verdad."
+      }
+    },
+    "presentation": {
+      "message": "Encuentra la paz y el amor incondicional que solo Cristo puede dar.",
+      "verse": "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna. - Juan 3:16",
+      "invitation": "¿Quieres conocer más sobre Jesús? ¡Te invitamos a visitarnos!"
+    },
+    "schedule": {
+      "wednesday": "Miércoles",
+      "sunday": "Domingo (culto devocional)",
+      "languages": "Francés | Español"
+    },
+    "events": {
+      "title": "Eventos"
+    },
+    "news": {
+      "title": "Últimas noticias"
+    },
+    "donations": {
+      "title": "Apoya nuestra misión",
+      "description": "Tu donación nos ayuda a seguir compartiendo el amor de Cristo y a servir a nuestra comunidad.",
+      "amount": "Monto de la donación (CAD):",
+      "success": "Transacción completada por"
+    },
+    "livestream": {
+      "title": "Transmisión en vivo",
+      "loading": "Cargando transmisión en vivo...",
+      "noStream": "No hay transmisión en vivo en este momento."
+    }
+  }

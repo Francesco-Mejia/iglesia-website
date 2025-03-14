@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { useTranslation } from 'react-i18next';
 
 export function Donations() 
 {
   const [donationAmount, setDonationAmount] = useState<string>('0.00');
+  const { t } = useTranslation();
 
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDonationAmount(event.target.value);
@@ -11,10 +13,10 @@ export function Donations()
 
   return (
     <div className="donations-container" id="donaciones">
-      <h2>Apoya nuestra misión</h2>
-      <p>Tu donación nos ayuda a seguir compartiendo el amor de Cristo y a servir a nuestra comunidad.</p>
+      <h2>{t('donations.title')}</h2>
+      <p>{t('donations.description')}</p>
       <div className="donation-amount">
-        <label htmlFor="donationAmount">Monto de la donación (CAD):</label>
+        <label htmlFor="donationAmount">{t('donations.amount')}</label>
         <input
           type="number"
           id="donationAmount"
@@ -42,7 +44,7 @@ export function Donations()
               return Promise.resolve();
             }
             return actions.order.capture().then((details) => {
-              alert("Transacción completada por " + details?.payer?.name?.given_name);
+              alert(t('donations.success') + " " + details?.payer?.name?.given_name);
             });
           }}
         />
