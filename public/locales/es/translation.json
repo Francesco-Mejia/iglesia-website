@@ -1,5 +1,5 @@
 {
-    "title": "Eglise Le Reste De Sa Grace",
+    "title": "Iglesia Remanente de la Gracia",
     "aboutUs": "Sobre Nosotros",
     "contact": "Contacto",
     "mission": "Misión",
@@ -44,6 +44,9 @@
     },
     "news": {
       "title": "Últimas noticias"
+    },
+    "contact": {
+      "title": "Contactenos"
     },
     "donations": {
       "title": "Apoya nuestra misión",

@@ -126,7 +126,7 @@ header {
 
 /* General Styles */
 body {
-  font-family: sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 20;
 }
 
@@ -247,12 +247,15 @@ footer {
   display: flex;
   justify-content: center;
 }
-
+.social-icon:hover {
+  transform: scale(1.4);
+}
 .social-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 20px;
+  transition: transform 0.2s ease-in-out;
 }
 
 .social-icon img {
@@ -260,6 +263,8 @@ footer {
   height: 80px;
   cursor: pointer;
   margin-bottom: 5px;
+  transform: scale(1.05);
+  transition: border-color 2s ease-in-out;
 }
 
 /*Donaciones*/
@@ -318,7 +323,7 @@ footer {
 }
 
 .topic-icon:hover {
-  transform: scale(1.05);
+  transform: scale(1.15);
 }
 
 .topic-icon img {

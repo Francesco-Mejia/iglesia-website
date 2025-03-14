@@ -8,12 +8,12 @@
     "header": {
       "schedule": "Horaires",
       "about": "À propos",
-      "location": "Emplacement",
+      "location": "Adresse",
       "events": "Événements",
       "news": "Actualités",
       "contact": "Contact",
       "donations": "Dons",
-      "livestream": "Direct"
+      "livestream": "En-Direct"
     },
     "about": {
       "mission": {
