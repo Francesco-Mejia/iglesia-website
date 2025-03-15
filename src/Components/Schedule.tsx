@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 export function Schedule() {
   const { t } = useTranslation();
+  const [showModal, setShowModal] = useState(false);
 
   const schedule = [
     { day: t('schedule.wednesday'), time: '18:45', languages: t('schedule.languages') },
@@ -10,17 +12,43 @@ export function Schedule() {
     { day: t('schedule.sunday'), time: '16:45', languages: t('schedule.languages') },
   ];
 
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+
   return (
-    <div id='horarios' className="schedule-container">
-      <div className="schedule-table">
-        {schedule.map((item, index) => (
-          <div key={index} className="schedule-row">
-            <div className="schedule-cell">{item.day}</div>
-            <div className="schedule-cell">{item.time}</div>
-            <div className="schedule-cell">{item.languages}</div>
+    <div id='horarios' className="schedule-section">
+      <Button 
+        onClick={handleShow} 
+        className="schedule-button"
+      >
+        <span className="schedule-button-text">{t('header.schedule')}</span>
+        <div className="schedule-button-icon">
+          <i className="fas fa-clock"></i>
+        </div>
+      </Button>
+
+      <Modal 
+        show={showModal} 
+        onHide={handleClose}
+        centered
+        className="schedule-modal"
+        backdropClassName="schedule-modal-backdrop"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>{t('header.schedule')}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="schedule-table">
+            {schedule.map((item, index) => (
+              <div key={index} className="schedule-row">
+                <div className="schedule-cell">{item.day}</div>
+                <div className="schedule-cell">{item.time}</div>
+                <div className="schedule-cell">{item.languages}</div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
