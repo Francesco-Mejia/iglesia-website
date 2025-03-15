@@ -30,13 +30,13 @@ export function AboutUs() {
     <div className="about-us-container" id="nosotros" onClick={handleBackgroundClick}>
       <div className="topics-container">
         <div className="topic-icon" onClick={(e) => { e.stopPropagation(); setSelectedTopic('mision'); }}>
-          <img src="/images/mission-icon.png" alt={t('about.mission.title')} />
+          <img src="/images/mission-icon2.png" alt={t('about.mission.title')} />
         </div>
         <div className="topic-icon" onClick={(e) => { e.stopPropagation(); setSelectedTopic('vision'); }}>
-          <img src="/images/vision-icon.png" alt={t('about.vision.title')} />
+          <img src="/images/vision-icon2.png" alt={t('about.vision.title')} />
         </div>
         <div className="topic-icon" onClick={(e) => { e.stopPropagation(); setSelectedTopic('valores'); }}>
-          <img src="/images/values-icon.png" alt={t('about.values.title')} />
+          <img src="/images/values2-icon.png" alt={t('about.values.title')} />
         </div>
       </div>
       {selectedTopic && (
