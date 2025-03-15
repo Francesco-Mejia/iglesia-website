@@ -7,7 +7,8 @@ export function AboutUs() {
   const [selectedTopic, setSelectedTopic] = useState<TopicKey | null>(null);
   const { t } = useTranslation();
 
-  const topics: { [key in TopicKey]: { title: string; text: string } } = {
+  const topics: { [key in TopicKey]: { title: string; text: string } } = 
+  {
     mision: {
       title: t('about.mission.title'),
       text: t('about.mission.text'),

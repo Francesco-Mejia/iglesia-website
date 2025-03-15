@@ -28,8 +28,7 @@ export function Header() {
               <Nav.Link href="#transmisiones">{t('header.livestream')}</Nav.Link>
               <button 
                 onClick={toggleLanguage}
-                className="ms-3 px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors border-0"
-                style={{ backgroundColor: '#56c4cc', color: 'white' }}
+                className="language-toggle"
               >
                 {i18n.language === 'es' ? 'Français' : 'Español'}
               </button>

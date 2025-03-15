@@ -15,9 +15,12 @@ export function Events ()
 
   useEffect(() => {
     const storedEvents = localStorage.getItem('events');
-    if (storedEvents) {
+    if (storedEvents) 
+    {
       setEvents(JSON.parse(storedEvents));
-    } else {
+    } 
+    else 
+    {
       fetch('/data/events.json')
         .then(res => res.json())
         .then(data => setEvents(data));
