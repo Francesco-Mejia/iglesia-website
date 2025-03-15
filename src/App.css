@@ -43,7 +43,7 @@ header {
 
 /* Presentacion */
 .presentacion-container {
-  background-image: url('/public/images/pres-bg.jpg'); 
+  background-image: url('/public/images/Presentation-bg.jpg'); 
   background-size: cover;
   background-position: center;
   height: 1000px;
@@ -80,7 +80,6 @@ header {
   background-color: black;
   color: white;
   padding: 20px;
-  margin: 20px auto;
   width: 100%;
 }
 
@@ -147,13 +146,12 @@ footer {
   display: flex;
   flex-direction: column;
   border: none;
-  background-color: black; 
+  background-color: rgb(6, 78, 146); 
   color: white;
 }
 
 .schedule-row {
   display: flex;
-  border-bottom: 1px solid #333;
 }
 
 .schedule-cell {
@@ -230,7 +228,7 @@ footer {
   justify-content: center;
   align-items: flex-start;
   min-height: 55vh;
-  padding: 110px; 
+  padding: 140px; 
   background-image: url('/public/images/contact-us-background.jpg');
   background-size: cover;
   background-position: center;
@@ -270,21 +268,30 @@ footer {
 /*Donaciones*/
 .donations-container {
   text-align: center;
-  padding: 40px;
-  background-color: #f0f0f0;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 20px auto;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  padding: 80px;
+  background-image: url('/public/images/Dons.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  color: rgb(0, 0, 0);
 }
 
 .donation-amount {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .donation-amount label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
+  font-size: 1.5em;
 }
 
 .donation-amount input {
@@ -293,6 +300,14 @@ footer {
   border-radius: 5px;
   width: 150px;
   text-align: right;
+  font-size: 1.2em;
+}
+
+.donations-container .paypal-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
 }
 
 /*AboutUs*/

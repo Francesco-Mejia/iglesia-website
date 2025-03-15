@@ -41,7 +41,7 @@ export function Header() {
         <Navbar.Brand>
           <Image src="/images/logo_iglesia.jpg" alt="Logo" className="header-logo" />
         </Navbar.Brand>
-        <h1>Église Le Reste De Sa Grâce</h1>
+        <h1>{t('title')}</h1>
       </div>
       
     </header>

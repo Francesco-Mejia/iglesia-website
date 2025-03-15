@@ -1,5 +1,5 @@
 {
-    "title": "Eglise Le Reste De Sa Grace",
+    "title": "Église Remanente de sa Grâce",
     "aboutUs": "À propos de nous",
     "contact": "Contact",
     "mission": "Mission",
@@ -13,7 +13,7 @@
       "news": "Actualités",
       "contact": "Contact",
       "donations": "Dons",
-      "livestream": "En-Direct"
+      "livestream": "Diffusions en direct"
     },
     "about": {
       "mission": {
@@ -55,7 +55,7 @@
       "success": "Transaction complétée par"
     },
     "livestream": {
-      "title": "Direct",
+      "title": "Diffusions en direct",
       "loading": "Chargement du direct...",
       "noStream": "Pas de direct en ce moment."
     }

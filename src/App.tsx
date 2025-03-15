@@ -50,17 +50,17 @@ function App()
       </Row>
       <Row>
         <Col>
+          <Contact />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
           <Events/>
         </Col>
       </Row>
       <Row>
         <Col>
           <News />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Contact />
         </Col>
       </Row>
       <Row>
