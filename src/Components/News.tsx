@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface NewsItem 
 {
@@ -10,6 +11,7 @@ interface NewsItem
 
 export function News()
 {
+  const { t } = useTranslation();
   const [news, setNews] = useState<NewsItem[]>([]);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export function News()
 
   return (
     <div id='noticias' className="news-container">
-      <h2>Últimas noticias</h2>
+      <h2>{t('news.title')}</h2>
       <div className="news-grid">
         {news.map((item, index) => (
           <div key={item.title} className="news-item">

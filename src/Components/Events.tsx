@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
+import { useTranslation } from 'react-i18next';
 
 interface Event 
 {
@@ -11,6 +12,7 @@ interface Event
 
 export function Events ()
 {
+  const { t } = useTranslation();
   const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export function Events ()
 
   return (
     <div className="events-container" id='eventos'>
-            <h2>Eventos</h2>
+            <h2>{t('events.title')}</h2>
             <div className="events-slider-container">
                 <Slider {...settings}>
                     {events.map((event, index) => (

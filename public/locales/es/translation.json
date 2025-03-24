@@ -57,6 +57,12 @@
     "livestream": {
       "title": "Transmisión en vivo",
       "loading": "Cargando transmisión en vivo...",
-      "noStream": "No hay transmisión en vivo en este momento."
+      "noStream": "No hay transmisión en vivo en este momento.",
+      "live": "EN VIVO",
+      "offline": "No hay transmisión en vivo en este momento",
+      "pastStreams": "Transmisiones Pasadas",
+      "watchNow": "Ver Ahora",
+      "noPastStreams": "No hay transmisiones pasadas disponibles",
+      "error": "Se produjo un error al cargar las transmisiones"
     }
   }

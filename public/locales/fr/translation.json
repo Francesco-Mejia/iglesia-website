@@ -57,6 +57,12 @@
     "livestream": {
       "title": "Diffusions en direct",
       "loading": "Chargement du direct...",
-      "noStream": "Pas de direct en ce moment."
+      "noStream": "Pas de direct en ce moment.",
+      "live": "EN DIRECT",
+      "offline": "Aucune diffusion en direct pour le moment",
+      "pastStreams": "Diffusions Passées",
+      "watchNow": "Regarder",
+      "noPastStreams": "Aucune diffusion passée disponible",
+      "error": "Une erreur est survenue lors du chargement des diffusions"
     }
   }

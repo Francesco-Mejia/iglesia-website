@@ -43,6 +43,13 @@ export function Contact() {
             onClick={() => openFacebookPage('https://www.facebook.com/egliselerestedesagrace/?locale=es_LA')}
           />
         </div>
+        <div className="social-icon">
+          <img
+            src="/images/IG-LOGO.png"
+            alt="Facebook"
+            onClick={() => openFacebookPage('https://www.facebook.com/egliselerestedesagrace/?locale=es_LA')}
+          />
+        </div>
       </div>
     </div>
   );

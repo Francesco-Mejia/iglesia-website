@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-export function Schedule() {
+export function Schedule() 
+{
   const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
 
