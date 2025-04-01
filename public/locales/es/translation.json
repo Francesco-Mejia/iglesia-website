@@ -52,7 +52,22 @@
       "title": "Apoya nuestra misión",
       "description": "Tu donación nos ayuda a seguir compartiendo el amor de Cristo y a servir a nuestra comunidad.",
       "amount": "Monto de la donación (CAD):",
-      "success": "Transacción completada por"
+      "success": "Transacción completada por",
+      "interac": {
+        "title": "Donación por Interac",
+        "email": "Correo Interac:",
+        "emailPlaceholder": "Ingrese su correo Interac",
+        "instructions": "Instrucciones para la donación:",
+        "steps": [
+          "Ingrese su correo Interac",
+          "Ingrese el monto de la donación",
+          "Haga clic en 'Enviar'",
+          "Acepte la solicitud de pago en su aplicación bancaria"
+        ],
+        "send": "Enviar solicitud de pago",
+        "processing": "Procesando...",
+        "error": "Se produjo un error al procesar la solicitud"
+      }
     },
     "livestream": {
       "title": "Transmisión en vivo",

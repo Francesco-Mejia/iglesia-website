@@ -52,7 +52,22 @@
       "title": "Soutenez notre mission",
       "description": "Votre don nous aide à continuer à partager l'amour du Christ et à servir notre communauté.",
       "amount": "Montant du don (CAD) :",
-      "success": "Transaction complétée par"
+      "success": "Transaction complétée par",
+      "interac": {
+        "title": "Don par Interac",
+        "email": "Email Interac :",
+        "emailPlaceholder": "Entrez votre email Interac",
+        "instructions": "Instructions pour le don :",
+        "steps": [
+          "Entrez votre email Interac",
+          "Entrez le montant du don",
+          "Cliquez sur 'Envoyer'",
+          "Acceptez la demande de paiement dans votre application bancaire"
+        ],
+        "send": "Envoyer la demande de paiement",
+        "processing": "Traitement en cours...",
+        "error": "Une erreur est survenue lors du traitement de la demande"
+      }
     },
     "livestream": {
       "title": "Diffusions en direct",
