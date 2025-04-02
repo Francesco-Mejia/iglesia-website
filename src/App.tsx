@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Row, Col } from 'react-bootstrap';
@@ -17,68 +18,39 @@ import { Events } from './Components/Events';
 import { News } from './Components/News';
 import { Donations } from './Components/Donations';
 import { Contact } from './Components/Contact';
-import { AboutUs } from './Components/AboutUs';
+import { AboutUsPage } from './pages/AboutUsPage';
 
-function App() 
-{
+function HomePage() {
   return (
     <>
-      <Row>
-        <Col>
-          <Header />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Presentacion />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Schedule />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <AboutUs />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Map />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Contact />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Events/>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <News />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Donations />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <LiveStream/>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Footer />
-        </Col>
-      </Row>
+      <Presentacion />
+      <Schedule />
+      
+      
+      <Map />
+      <News />
+      <Events />
+      <Contact />
+      <LiveStream />
+      <Donations />
     </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutUsPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
