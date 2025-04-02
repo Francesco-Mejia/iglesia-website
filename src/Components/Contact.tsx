@@ -1,56 +1,67 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export function Contact() {
   const { t } = useTranslation();
 
-  const openFacebookPage = (url: string) => {
-    window.open(url, '_blank');
-  };
-
-  const openYouTubeChannel = (url: string) => {
-    window.open(url, '_blank');
-  };
-
-  const openEmailClient = (email: string) => {
-    window.location.href = `mailto:${email}`;
-  };
+  const socialLinks = [
+    {
+      icon: '/images/email-icon.png',
+      alt: 'Email',
+      action: () => window.location.href = 'mailto:scristosalva@hotmail.fr',
+      ariaLabel: 'Envoyer un email'
+    },
+    {
+      icon: '/images/youtube-icon.png',
+      alt: 'YouTube',
+      action: () => window.open('https://www.youtube.com/@HectorLuisVente/featured', '_blank'),
+      ariaLabel: 'Visiter notre chaîne YouTube'
+    },
+    {
+      icon: '/images/facebook.png',
+      alt: 'Facebook',
+      action: () => window.open('https://www.facebook.com/egliselerestedesagrace/?locale=es_LA', '_blank'),
+      ariaLabel: 'Visiter notre page Facebook'
+    },
+    {
+      icon: '/images/IG-LOGO.png',
+      alt: 'Instagram',
+      action: () => window.open('https://www.instagram.com/egliselerestedesagrace?igsh=NmJ3NjN4bTQ3czBn&utm_source=qr', '_blank'),
+      ariaLabel: 'Visiter notre profil Instagram'
+    }
+  ];
 
   return (
-    <div className="contact-container" id="contacto">
-      <div className="contact-header">
-        <h2>{t('contact.title')}</h2>
-      </div>
-      <div className="social-icons">
-        <div className='social-icon'>
-            <img 
-              src='/images/email-icon.png' 
-              alt="Email" 
-              onClick={() => openEmailClient('scristosalva@hotmail.fr')}
-            />
-        </div>
-        <div className="social-icon">
-          <img
-            src="/images/youtube-icon.png"
-            alt="YouTube"
-            onClick={() => openYouTubeChannel('https://www.youtube.com/@HectorLuisVente/featured')}
-          />
-        </div>
-        <div className="social-icon">
-          <img
-            src="/images/facebook.png"
-            alt="Facebook"
-            onClick={() => openFacebookPage('https://www.facebook.com/egliselerestedesagrace/?locale=es_LA')}
-          />
-        </div>
-        <div className="social-icon">
-          <img
-            src="/images/IG-LOGO.png"
-            alt="Instagram"
-            onClick={() => openFacebookPage('https://www.instagram.com/egliselerestedesagrace?igsh=NmJ3NjN4bTQ3czBn&utm_source=qr')}
-          />
-        </div>
-      </div>
-    </div>
+    <section className="contact-section" id="contacto">
+      <Container fluid className="contact-container">
+        <Row className="justify-content-center">
+          <Col xs={12} className="text-center mb-4">
+            <h2 className="contact-title">{t('contact.title')}</h2>
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col xs={12}>
+            <div className="social-icons-container">
+              {socialLinks.map((link, index) => (
+                <div 
+                  key={index} 
+                  className="social-icon-wrapper"
+                  onClick={link.action}
+                  role="button"
+                  aria-label={link.ariaLabel}
+                >
+                  <img 
+                    src={link.icon} 
+                    alt={link.alt}
+                    className="social-icon-img"
+                  />
+                </div>
+              ))}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
   );
 }

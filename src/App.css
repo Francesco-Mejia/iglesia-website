@@ -462,49 +462,114 @@ footer {
   margin-top: 0;
 }
 
-/* Contact*/
-.contact-container {
-  text-align: left;
-  display: flex;
-  flex-direction: column; 
-  justify-content: center;
-  align-items: flex-start;
+/* Contact */
+.contact-section {
+  position: relative;
   min-height: 70vh;
-  padding: 140px; 
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.contact-container {
+  position: relative;
+  padding: 13rem;
   background-image: url('/public/images/contact-us-background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #ffffff;
+  z-index: 1;
 }
 
-.contact-header {
-  padding: 20px;
-  margin-bottom: 50px;
+.contact-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
 }
 
-.social-icons {
+.contact-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.social-icons-container {
   display: flex;
   justify-content: center;
-}
-.social-icon:hover {
-  transform: scale(1.4);
-}
-.social-icon {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  margin: 0 20px;
-  transition: transform 0.2s ease-in-out;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem;
 }
 
-.social-icon img {
-  width: 80px;
-  height: 80px;
+.social-icon-wrapper {
+  position: relative;
   cursor: pointer;
-  margin-bottom: 5px;
-  transform: scale(1.05);
-  transition: border-color 2s ease-in-out;
+  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  padding: 1rem;
+  backdrop-filter: blur(5px);
+}
+
+.social-icon-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+.social-icon-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.social-icon-wrapper:hover .social-icon-img {
+  transform: scale(1.1);
+}
+
+/* Media Queries pour Contact */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 6rem 1rem;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .social-icons-container {
+    gap: 1.5rem;
+  }
+
+  .social-icon-img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-container {
+    padding: 10rem 1rem;
+  }
+
+  .contact-title {
+    font-size: 1.8rem;
+  }
+
+  .social-icons-container {
+    gap: 1rem;
+  }
+
+  .social-icon-img {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 /*Donaciones*/
