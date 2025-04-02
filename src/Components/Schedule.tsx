@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Container, Row, Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 export function Schedule() 
@@ -18,15 +18,21 @@ export function Schedule()
 
   return (
     <div id='horarios' className="schedule-section">
-      <Button 
-        onClick={handleShow} 
-        className="schedule-button"
-      >
-        <span className="schedule-button-text">{t('header.schedule')}</span>
-        <div className="schedule-button-icon">
-          <i className="fas fa-clock"></i>
-        </div>
-      </Button>
+      <Container>
+        <Row className="justify-content-center">
+          <Col xs={12} md={8} lg={6}>
+            <Button 
+              onClick={handleShow} 
+              className="schedule-button w-100"
+            >
+              <span className="schedule-button-text">{t('header.schedule')}</span>
+              <div className="schedule-button-icon">
+                <i className="fas fa-clock"></i>
+              </div>
+            </Button>
+          </Col>
+        </Row>
+      </Container>
 
       <Modal 
         show={showModal} 

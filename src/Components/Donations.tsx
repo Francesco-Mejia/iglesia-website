@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Container, Row, Col, Form } from 'react-bootstrap';
 
 interface Steps {
   [key: string]: string[];
@@ -83,62 +84,72 @@ export function Donations() {
 
   return (
     <div className="donations-container" id="donaciones">
-      <h2>{t('donations.title')}</h2>
-      <p>{t('donations.description')}</p>
-      
-      <div className="interac-section">
-        <h3>{t('donations.interac.title')}</h3>
-        <form onSubmit={handleSubmit} className="interac-form">
-          <div className="form-group">
-            <label htmlFor="interacEmail">{t('donations.interac.email')}</label>
-            <input
-              type="email"
-              id="interacEmail"
-              value={interacEmail}
-              onChange={handleEmailChange}
-              placeholder={t('donations.interac.emailPlaceholder')}
-              required
-            />
-          </div>
+      <Container>
+        <Row className="justify-content-center mb-4">
+          <Col xs={12} className="text-center">
+            <h2>{t('donations.title')}</h2>
+            <p>{t('donations.description')}</p>
+          </Col>
+        </Row>
+        
+        <Row className="justify-content-center">
+          <Col xs={12} md={8} lg={6}>
+            <div className="interac-section">
+              <h3 className="text-center mb-4">{t('donations.interac.title')}</h3>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label htmlFor="interacEmail">{t('donations.interac.email')}</Form.Label>
+                  <Form.Control
+                    type="email"
+                    id="interacEmail"
+                    value={interacEmail}
+                    onChange={handleEmailChange}
+                    placeholder={t('donations.interac.emailPlaceholder')}
+                    required
+                  />
+                </Form.Group>
 
-          <div className="form-group">
-            <label htmlFor="donationAmount">{t('donations.amount')}</label>
-            <input
-              type="number"
-              id="donationAmount"
-              value={donationAmount}
-              onChange={handleAmountChange}
-              min="0"
-              step="0.01"
-              required
-            />
-          </div>
+                <Form.Group className="mb-3">
+                  <Form.Label htmlFor="donationAmount">{t('donations.amount')}</Form.Label>
+                  <Form.Control
+                    type="number"
+                    id="donationAmount"
+                    value={donationAmount}
+                    onChange={handleAmountChange}
+                    min="0"
+                    step="0.01"
+                    required
+                  />
+                </Form.Group>
 
-          <div className="instructions">
-            <h4>{t('donations.interac.instructions')}</h4>
-            <ol>
-              {(t('donations.interac.steps', { returnObjects: true }) as string[]).map((step: string, index: number) => (
-                <li key={index}>{step}</li>
-              ))}
-            </ol>
-            <div className="church-interac-info">
-              <p><strong>Email Interac de l'église:</strong> {CHURCH_INTERAC_EMAIL}</p>
-              <p className="note">Note: Un message de sécurité unique sera généré pour chaque don.</p>
+                <div className="instructions mb-4">
+                  <h4>{t('donations.interac.instructions')}</h4>
+                  <ol>
+                    {(t('donations.interac.steps', { returnObjects: true }) as string[]).map((step: string, index: number) => (
+                      <li key={index}>{step}</li>
+                    ))}
+                  </ol>
+                  <div className="church-interac-info">
+                    <p><strong>Email Interac de l'église:</strong> {CHURCH_INTERAC_EMAIL}</p>
+                    <p className="note">Note: Un message de sécurité unique sera généré pour chaque don.</p>
+                  </div>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="interac-button w-100"
+                  disabled={isProcessing}
+                >
+                  {isProcessing ? t('donations.interac.processing') : t('donations.interac.send')}
+                </button>
+
+                {error && <p className="error-message mt-3">{error}</p>}
+                {success && <p className="success-message mt-3">{t('donations.success')} {interacEmail}</p>}
+              </Form>
             </div>
-          </div>
-
-          <button 
-            type="submit" 
-            className="interac-button"
-            disabled={isProcessing}
-          >
-            {isProcessing ? t('donations.interac.processing') : t('donations.interac.send')}
-          </button>
-
-          {error && <p className="error-message">{error}</p>}
-          {success && <p className="success-message">{t('donations.success')} {interacEmail}</p>}
-        </form>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

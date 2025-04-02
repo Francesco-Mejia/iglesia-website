@@ -352,22 +352,76 @@ footer {
 }
 
 /*Ubicacion*/
+.map-section {
+  background: rgb(255, 255, 255);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #56c4cc, #3498db, #56c4cc);
+  animation: gradient 3s ease infinite;
+  background-size: 200% 200%;
+}
+
 .map-container {
-  height: 800px;
-  margin: 60px auto;
-  width: 1800px;
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
-.image-col {
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center; 
+.map-col {
+  position: relative;
+  height: 400px;
 }
 
-.image-col img {
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.map-image-wrapper {
   max-width: 500px;
-  height: auto;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .map-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-section {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .map-section {
+    padding: 1rem 0;
+  }
+
+  .map-col {
+    height: 300px;
+  }
+
+  .image-col {
+    padding: 1rem;
+  }
+
+  .map-image-wrapper {
+    max-width: 250px;
+  }
 }
 
 /*Noticias*/

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'react-bootstrap';
+import { Modal, Container, Row, Col } from 'react-bootstrap';
 
 interface StreamSnippet {
   title: string;
@@ -64,55 +64,70 @@ export function LiveStream() {
 
   return (
     <div className="live-stream-container" id="transmisiones">
-      <h2>{t('livestream.title')}</h2>
-      
-      {isLive ? (
-        <div className="live-stream-active">
-          <div className="live-indicator">
-            <span className="live-dot"></span>
-            {t('livestream.live')}
-          </div>
-          <iframe
-            width="100%"
-            height="500"
-            src={`https://www.youtube.com/embed/live/${channelId}`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title="Live Stream"
-          />
-        </div>
-      ) : (
-        <div className="live-stream-offline">
-          <p>{t('livestream.offline')}</p>
-        </div>
-      )}
+      <Container>
+        <Row className="justify-content-center mb-5">
+          <Col xs={12} className="text-center">
+            <h2>{t('livestream.title')}</h2>
+          </Col>
+        </Row>
+        
+        {isLive ? (
+          <Row className="justify-content-center mb-5">
+            <Col xs={12} className="position-relative">
+              <div className="live-indicator">
+                <span className="live-dot"></span>
+                {t('livestream.live')}
+              </div>
+              <div className="ratio ratio-16x9">
+                <iframe
+                  src={`https://www.youtube.com/embed/live/${channelId}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="Live Stream"
+                />
+              </div>
+            </Col>
+          </Row>
+        ) : (
+          <Row className="justify-content-center mb-5">
+            <Col xs={12} className="text-center">
+              <div className="live-stream-offline">
+                <p>{t('livestream.offline')}</p>
+              </div>
+            </Col>
+          </Row>
+        )}
 
-      <div className="past-streams">
-        <h3>{t('livestream.pastStreams')}</h3>
-        <div className="past-streams-grid">
+        <Row className="justify-content-center">
+          <Col xs={12} className="text-center mb-4">
+            <h3>{t('livestream.pastStreams')}</h3>
+          </Col>
           {pastStreams.length > 0 ? (
             pastStreams.map((stream, index) => (
-              <div key={index} className="past-stream-card" onClick={() => handleVideoClick(stream)}>
-                <img 
-                  src={stream.snippet.thumbnails.high.url} 
-                  alt={stream.snippet.title}
-                  className="past-stream-thumbnail"
-                />
-                <div className="past-stream-info">
-                  <h4>{stream.snippet.title}</h4>
-                  <p>{new Date(stream.snippet.publishedAt).toLocaleDateString()}</p>
-                  <button className="watch-button">
-                    {t('livestream.watchNow')}
-                  </button>
+              <Col key={index} xs={12} sm={6} md={4} className="mb-4">
+                <div className="past-stream-card h-100" onClick={() => handleVideoClick(stream)}>
+                  <img 
+                    src={stream.snippet.thumbnails.high.url} 
+                    alt={stream.snippet.title}
+                    className="past-stream-thumbnail img-fluid"
+                  />
+                  <div className="past-stream-info">
+                    <h4>{stream.snippet.title}</h4>
+                    <p>{new Date(stream.snippet.publishedAt).toLocaleDateString()}</p>
+                    <button className="watch-button">
+                      {t('livestream.watchNow')}
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </Col>
             ))
           ) : (
-            <p className="no-streams">{t('livestream.noPastStreams')}</p>
+            <Col xs={12} className="text-center">
+              <p className="no-streams">{t('livestream.noPastStreams')}</p>
+            </Col>
           )}
-        </div>
-      </div>
+        </Row>
+      </Container>
 
       <Modal show={showModal} onHide={handleCloseModal} size="lg" centered>
         <Modal.Header closeButton>
@@ -120,15 +135,14 @@ export function LiveStream() {
         </Modal.Header>
         <Modal.Body>
           {selectedVideo && (
-            <iframe
-              width="100%"
-              height="500"
-              src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title={selectedVideo.snippet.title}
-            />
+            <div className="ratio ratio-16x9">
+              <iframe
+                src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={selectedVideo.snippet.title}
+              />
+            </div>
           )}
         </Modal.Body>
       </Modal>

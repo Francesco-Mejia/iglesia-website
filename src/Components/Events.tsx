@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import { useTranslation } from 'react-i18next';
+import { Container, Row, Col } from 'react-bootstrap';
 
 interface Event 
 {
@@ -44,25 +45,58 @@ export function Events ()
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 8000,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
     <div className="events-container" id='eventos'>
+      <Container>
+        <Row className="justify-content-center mb-4">
+          <Col xs={12} className="text-center">
             <h2>{t('events.title')}</h2>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
             <div className="events-slider-container">
-                <Slider {...settings}>
-                    {events.map((event, index) => (
-                        <div key={event.title} className="event-item">
-                            <img src={event.banner} alt={event.title} className="event-banner" />
-                            <div className="event-details">
-                                <h3>{event.title}</h3>
-                                <p className="event-date">{event.date}</p>
-                                <p className="event-description">{event.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                </Slider>
+              <Slider {...settings}>
+                {events.map((event, index) => (
+                  <div key={event.title} className="event-item">
+                    <img src={event.banner} alt={event.title} className="event-banner img-fluid" />
+                    <div className="event-details">
+                      <h3>{event.title}</h3>
+                      <p className="event-date">{event.date}</p>
+                      <p className="event-description">{event.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </Slider>
             </div>
-        </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };

@@ -46,8 +46,8 @@ export function Contact() {
         <div className="social-icon">
           <img
             src="/images/IG-LOGO.png"
-            alt="Facebook"
-            onClick={() => openFacebookPage('https://www.facebook.com/egliselerestedesagrace/?locale=es_LA')}
+            alt="Instagram"
+            onClick={() => openFacebookPage('https://www.instagram.com/egliselerestedesagrace?igsh=NmJ3NjN4bTQ3czBn&utm_source=qr')}
           />
         </div>
       </div>
