@@ -33,7 +33,6 @@ export function AboutUsPage() {
       <div className="about-hero">
         <Container>
           <h1 className="about-title">{t('about.title')}</h1>
-          <p className="about-subtitle">{t('about.subtitle')}</p>
         </Container>
       </div>
 

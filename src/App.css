@@ -563,52 +563,6 @@ footer {
   margin-top: 10px;
 }
 
-/*AboutUs*/
-.about-us-container {
-  text-align: center;
-  padding: 150px;
-  background-image: url('/public/images/AboutUs-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-  color: #fff;
-}
-
-.topics-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 50px;
-}
-
-.topic-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
-
-.topic-icon:hover {
-  transform: scale(1.15);
-}
-
-.topic-icon img {
-  width: 250px;
-  height: 250px;
-  margin-bottom: 10px;
-  transition: border-color 0.2s ease-in-out;
-}
-
-.topic-text {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 5px;
-  text-align: left;
-  color: #333;
-}
-
 /* LiveStream */
 .live-stream-container {
   padding: 60px 20px;
@@ -761,27 +715,17 @@ footer {
   background-image: url('/public/images/AboutUs-bg.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  color: white;
-  padding: 8rem 0 4rem;
+  background-repeat: no-repeat;
+  color: rgb(255, 255, 255);
+  padding: 20rem 0 4rem;
   position: relative;
   text-align: center;
 }
 
-.about-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
+
 
 .about-hero Container {
   position: relative;
-  z-index: 2;
 }
 
 .about-title {
@@ -791,22 +735,14 @@ footer {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.about-subtitle {
-  font-size: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-  opacity: 0.9;
-}
-
 .about-content {
-  padding: 4rem 0;
-  margin-top: -4rem;
+  padding: 9rem 0;
   position: relative;
   z-index: 2;
 }
 
 .topic-card {
-  background: white;
+  background: rgb(222, 223, 223);
   border-radius: 15px;
   padding: 2rem;
   text-align: center;
@@ -958,8 +894,8 @@ footer {
 }
 
 .nav-link {
-  color: #333 !important;
-  font-size: 0.9rem;
+  color: #000000 !important;
+  font-size: 1rem;
   padding: 0.5rem 1rem !important;
   transition: color 0.3s ease;
 }
