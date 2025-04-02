@@ -17,7 +17,7 @@ export function AboutUsPage() {
     vision: {
       title: t('about.vision.title'),
       text: t('about.vision.text'),
-      icon: '/images/vision-icon2.png'
+      icon: '/images/VISION2.png'
     },
     valores: {
       title: t('about.values.title'),

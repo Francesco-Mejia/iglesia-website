@@ -712,7 +712,7 @@ footer {
 }
 
 .about-hero {
-  background-image: url('/public/images/SobreNosotrosBG.jpg');
+  background-image: url('/public/images/Presentation-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -721,8 +721,6 @@ footer {
   position: relative;
   text-align: center;
 }
-
-
 
 .about-hero Container {
   position: relative;

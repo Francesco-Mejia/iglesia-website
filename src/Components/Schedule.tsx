@@ -8,9 +8,9 @@ export function Schedule()
   const [showModal, setShowModal] = useState(false);
 
   const schedule = [
-    { day: t('schedule.wednesday'), time: '18:45', languages: t('schedule.languages') },
-    { day: t('schedule.sunday'), time: '10:00', languages: t('schedule.languages') },
-    { day: t('schedule.sunday'), time: '16:45', languages: t('schedule.languages') },
+    { day: t('schedule.wednesday'), time: '18:45 - 20h30', languages: t('schedule.languages') },
+    { day: t('schedule.sunday'), time: '10:00 - 12h30', languages: t('schedule.languages') },
+    { day: t('schedule.sunday'), time: '16:45 - 18h45', languages: t('schedule.languages') },
   ];
 
   const handleClose = () => setShowModal(false);
