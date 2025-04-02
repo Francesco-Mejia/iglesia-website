@@ -1,6 +1,6 @@
 /* Presentacion */
 .presentacion-container {
-  background-image: url('/public/images/Presentation-bg.jpg'); 
+  background-image: url('/public/images/SobreNosotrosBG.jpg'); 
   background-size: cover;
   background-position: center;
   height: 1000px;
@@ -104,8 +104,8 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 500px;
-  background-image: url('/public/images/AboutUs-bg.jpg');
+  min-height: 750px;
+  background-image: url('/public/images/Presentation-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -170,7 +170,7 @@ footer {
 }
 
 .schedule-modal .modal-body {
-  padding: 30px;
+  padding: 12px;
 }
 
 .schedule-table {
@@ -186,7 +186,7 @@ footer {
 
 .schedule-row {
   display: flex;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.1);
   transition: background-color 0.3s ease;
 }
 
@@ -202,7 +202,7 @@ footer {
   flex: 1;
   padding: 25px;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-family: 'Neo Sans Pro', sans-serif;
 }
 
@@ -712,12 +712,12 @@ footer {
 }
 
 .about-hero {
-  background-image: url('/public/images/AboutUs-bg.jpg');
+  background-image: url('/public/images/SobreNosotrosBG.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: rgb(255, 255, 255);
-  padding: 20rem 0 4rem;
+  padding: 40rem 0 4rem;
   position: relative;
   text-align: center;
 }
@@ -738,7 +738,6 @@ footer {
 .about-content {
   padding: 9rem 0;
   position: relative;
-  z-index: 2;
 }
 
 .topic-card {
@@ -778,7 +777,7 @@ footer {
 }
 
 .topic-title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #333;
   margin: 0;
 }
@@ -1020,8 +1019,8 @@ header::before {
 }
 
 .header-logo {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   margin-right: 30px;
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(86, 196, 204, 0.3);
