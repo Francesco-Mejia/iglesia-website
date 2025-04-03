@@ -24,13 +24,10 @@ function HomePage() {
   return (
     <>
       <Presentacion />
-      <Events />
       <Schedule />
-      
-      
+      <Events />
       <Map />
       <News />
-      
       <Contact />
       <LiveStream />
       <Donations />

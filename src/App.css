@@ -913,17 +913,18 @@ footer {
 .navbar-nav {
   display: flex;
   justify-content: flex-end;
-  gap: 0.5rem;
+  gap: 0.2rem;
   margin-left: auto;
 }
 
 .nav-link {
   color: #000000 !important;
-  font-size: 0.9rem;
-  padding: 0.5rem 0.8rem !important;
+  font-size: 0.75rem !important;
+  padding: 0.3rem 0.4rem !important;
   transition: all 0.3s ease;
   position: relative;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -950,12 +951,12 @@ footer {
 .language-toggle {
   background: linear-gradient(45deg, #56c4cc, #3498db);
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 20px;
   color: white;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   transition: all 0.3s ease;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 .language-toggle:hover {
@@ -963,33 +964,74 @@ footer {
   box-shadow: 0 4px 15px rgba(86, 196, 204, 0.2);
 }
 
-@media (max-width: 991px) {
-  .navbar-nav {
-    text-align: center;
-    padding: 1rem 0;
-    justify-content: center;
-  }
-
-  .language-toggle {
-    margin: 1rem auto;
-    display: block;
+/* Styles pour iPad et tablettes */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .site-header {
+    position: relative;
   }
 
   .header-logo {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-@media (max-width: 576px) {
-  .header-logo {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 
   .nav-link {
-    padding: 0.3rem 0.5rem !important;
+    font-size: 0.7rem !important;
+    padding: 0.2rem 0.3rem !important;
+  }
+
+  .language-toggle {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .navbar-nav {
+    gap: 0.1rem;
+  }
+}
+
+/* Styles pour les petits écrans */
+@media (max-width: 767px) {
+  .site-header {
+    position: relative;
+  }
+
+  .header-logo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+
+  .nav-link {
+    font-size: 0.85rem !important;
+    padding: 0.4rem !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .language-toggle {
+    margin: 0.5rem auto;
+    display: block;
     font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 375px) {
+  .header-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav-link {
+    font-size: 0.8rem !important;
+    padding: 0.3rem !important;
   }
 }
 
