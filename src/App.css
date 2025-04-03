@@ -34,7 +34,7 @@
 
 /* Eventos */
 .events-container {
-  background-color: black;
+  background: white;
   color: white;
   padding: 20px;
   width: 100%;
@@ -75,8 +75,8 @@
 
 .slick-prev:before,
 .slick-next:before {
-  color: white;
-  font-size: 25px;
+  color: rgb(0, 0, 0);
+  font-size: 28px;
 }
 
 
@@ -534,7 +534,7 @@ footer {
   max-width: 600px;
   margin: 0 auto;
   padding: 30px;
-  background: rgb(172, 203, 238);
+  background: rgb(255, 255, 255);
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }

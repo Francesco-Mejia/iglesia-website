@@ -85,13 +85,6 @@ export function Donations() {
   return (
     <div className="donations-container" id="donaciones">
       <Container>
-        <Row className="justify-content-center mb-4">
-          <Col xs={12} className="text-center">
-            <h2>{t('donations.title')}</h2>
-            <p>{t('donations.description')}</p>
-          </Col>
-        </Row>
-        
         <Row className="justify-content-center">
           <Col xs={12} md={8} lg={6}>
             <div className="interac-section">

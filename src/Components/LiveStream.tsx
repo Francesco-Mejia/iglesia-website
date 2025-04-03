@@ -91,7 +91,6 @@ export function LiveStream() {
       <Container>
         <Row className="justify-content-center mb-5">
           <Col xs={12} className="text-center">
-            <h3>{t('livestream.title')}</h3>
           </Col>
         </Row>
         

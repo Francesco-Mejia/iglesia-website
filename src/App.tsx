@@ -23,9 +23,9 @@ import { AboutUsPage } from './pages/AboutUsPage';
 function HomePage() {
   return (
     <>
-      <Presentacion />
+      <Presentacion /><Events />
       <Schedule />
-      <Events />
+      
       <Map />
       <News />
       <Contact />

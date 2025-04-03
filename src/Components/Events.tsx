@@ -73,11 +73,7 @@ export function Events ()
   return (
     <div className="events-container" id='eventos'>
       <Container>
-        <Row className="justify-content-center mb-4">
-          <Col xs={12} className="text-center">
-            <h2>{t('events.title')}</h2>
-          </Col>
-        </Row>
+        
         <Row>
           <Col xs={12}>
             <div className="events-slider-container">
