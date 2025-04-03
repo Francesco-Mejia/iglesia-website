@@ -25,41 +25,39 @@ export function Header() {
     <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
       <Navbar expand="lg" className="navigation-bar">
         <Container>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mx-auto">
-              <Nav.Link as={Link} to="/">{t('header.home')}</Nav.Link>
-              <Nav.Link href="#horarios">{t('header.schedule')}</Nav.Link>
-              <Nav.Link href="#ubicacion">{t('header.location')}</Nav.Link>
-              <Nav.Link href="#eventos">{t('header.events')}</Nav.Link>
-              <Nav.Link href="#noticias">{t('header.news')}</Nav.Link>
-              <Nav.Link href="#contacto">{t('header.contact')}</Nav.Link>
-              <Nav.Link href="#transmisiones">{t('header.livestream')}</Nav.Link>
-              <Nav.Link href="#donaciones">{t('header.donations')}</Nav.Link>
-              <Nav.Link as={Link} to="/about">{t('header.about')}</Nav.Link>
-            </Nav>
-            <button 
-              className="language-toggle" 
-              onClick={changeLanguage}
-            >
-              {i18n.language === 'es' ? 'Français' : 'Español'}
-            </button>
-          </Navbar.Collapse>
+          <div className="d-flex align-items-center w-100">
+            <div className="logo-section me-4">
+              <Link to="/" className="logo-link">
+                <img
+                  src="/images/logo_iglesia.jpg"
+                  alt="Logo"
+                  className="header-logo"
+                />
+              </Link>
+            </div>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="ms-auto">
+                <Nav.Link as={Link} to="/">{t('header.home')}</Nav.Link>
+                <Nav.Link href="#horarios">{t('header.schedule')}</Nav.Link>
+                <Nav.Link href="#ubicacion">{t('header.location')}</Nav.Link>
+                <Nav.Link href="#eventos">{t('header.events')}</Nav.Link>
+                <Nav.Link href="#noticias">{t('header.news')}</Nav.Link>
+                <Nav.Link href="#contacto">{t('header.contact')}</Nav.Link>
+                <Nav.Link href="#transmisiones">{t('header.livestream')}</Nav.Link>
+                <Nav.Link href="#donaciones">{t('header.donations')}</Nav.Link>
+                <Nav.Link as={Link} to="/about">{t('header.about')}</Nav.Link>
+              </Nav>
+              <button 
+                className="language-toggle ms-3" 
+                onClick={changeLanguage}
+              >
+                {i18n.language === 'es' ? 'Français' : 'Español'}
+              </button>
+            </Navbar.Collapse>
+          </div>
         </Container>
       </Navbar>
-
-      <div className="logo-section">
-        <Link to="/" className="logo-link">
-          <img
-            src="/images/logo_iglesia.jpg"
-            alt="Logo"
-            className="header-logo"
-          />
-        </Link>
-        <h1 className="church-title">
-          {t('title')}
-        </h1>
-      </div>
     </header>
   );
 }

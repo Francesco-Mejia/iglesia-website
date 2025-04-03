@@ -872,41 +872,26 @@ footer {
 /* Header Styles */
 .site-header {
   display: flex;
-  flex-direction: column;
   width: 100%;
   background: linear-gradient(135deg, #f5f5f5f6 0%, #e0e0e0 100%);
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .navigation-bar {
   background-color: transparent;
-  padding: 0.5rem 0;
+  padding: 0.1rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.navbar-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.nav-link {
-  color: #000000 !important;
-  font-size: 1rem;
-  padding: 0.5rem 1rem !important;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #56c4cc !important;
+  width: 100%;
 }
 
 .logo-section {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 2rem 0;
-  text-align: center;
+  padding: 0.5rem 0;
 }
 
 .logo-link {
@@ -914,10 +899,9 @@ footer {
 }
 
 .header-logo {
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  margin-bottom: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
@@ -926,11 +910,41 @@ footer {
   transform: scale(1.05);
 }
 
-.church-title {
-  font-size: 2.5rem;
-  color: #333;
-  margin: 0;
-  font-weight: 600;
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.nav-link {
+  color: #000000 !important;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.8rem !important;
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #56c4cc !important;
+  transform: translateY(-2px);
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #56c4cc;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+  width: 100%;
 }
 
 .language-toggle {
@@ -941,6 +955,7 @@ footer {
   color: white;
   font-size: 0.9rem;
   transition: all 0.3s ease;
+  margin-left: 1rem;
 }
 
 .language-toggle:hover {
@@ -952,6 +967,7 @@ footer {
   .navbar-nav {
     text-align: center;
     padding: 1rem 0;
+    justify-content: center;
   }
 
   .language-toggle {
@@ -959,24 +975,21 @@ footer {
     display: block;
   }
 
-  .church-title {
-    font-size: 2rem;
-    padding: 0 1rem;
+  .header-logo {
+    width: 60px;
+    height: 60px;
   }
 }
 
 @media (max-width: 576px) {
   .header-logo {
-    width: 120px;
-    height: 120px;
-  }
-
-  .church-title {
-    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
   }
 
   .nav-link {
     padding: 0.3rem 0.5rem !important;
+    font-size: 0.8rem;
   }
 }
 
@@ -986,7 +999,7 @@ header {
   flex-direction: column;
   align-items: center;
   background: linear-gradient(135deg, #f5f5f5f6 0%, #e0e0e0 100%);
-  padding: 20px;
+  padding: 5px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -1032,18 +1045,6 @@ header::before {
   100% { box-shadow: 0 0 0 0 rgba(86, 196, 204, 0); }
 }
 
-header h1 {
-  font-size: 2.5em;
-  color: #333;
-  margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(45deg, #333, #56c4cc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 @keyframes titleGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -1053,7 +1054,6 @@ header h1 {
 .navbar {
   background-color: transparent;
   width: 100%;
-  padding: 20px 0;
   position: relative;
 }
 
@@ -1077,14 +1077,14 @@ header h1 {
 }
 
 .navbar-nav .nav-link {
-  color: #000000;
+  color: #333;
   text-decoration: none;
-  padding: 8px 16px;
-  margin: 0 5px;
+  padding: 1px 1px;
+  margin: 0 1px;
   position: relative;
   transition: all 0.3s ease;
   font-weight: 500;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .navbar-nav .nav-link::before {
