@@ -1,20 +1,20 @@
 [
     {
-      "title": "Nuevo programa de jóvenes",
-      "date": "2024-02-20",
-      "content": "¡Únete a nuestro nuevo programa de jóvenes!",
-      "image": "/images/background2.jpg"
+      "title": "Abril: El mes del Evangelismo / Avril le mois de l'Evangile",
+      "date": "2025-04-01",
+      "content": "Ven y conoce el Evangelio / Viens et connais l'Evangile",
+      "image": "/images/Evangelismo-biblia.jpg"
     },
     {
-      "title": "Aniversario de la iglesia",
-      "date": "2024-03-10",
-      "content": "¡Celebramos nuestro aniversario con un servicio especial!",
-      "image": "/images/background.jpg"
+      "title": "Semana Santa / Semaine Sainte",
+      "date": "Desde el lunes 14 al domingo 20 de abril 2025 / Du lundi 14 au dimanche 20 avril 2025",
+      "content": "Celebramos la semana santa con cultos especiales! / Nous célébrons la semaine Sainte avec des cultes spéciaux!",
+      "image": "/images/Semana-santa.jpg"
     },
     {
-      "title": "Aniversario de la iglesia",
-      "date": "2024-03-10",
-      "content": "¡Celebramos nuestro aniversario con un servicio especial!",
-      "image": "/images/background.jpg"
+      "title": "Dirección/ Adresse",
+      "date": "Québec, QC, Canada",
+      "content": "766 Rue Kirouac, suite 201, Québec, QC G1N 2J4",
+      "image": "/images/AdresseEglise.png"
     }
 ]
