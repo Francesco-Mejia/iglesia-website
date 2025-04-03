@@ -37,6 +37,7 @@
       "invitation": "Voulez-vous en savoir plus sur Jésus ? Nous vous invitons à nous rendre visite !"
     },
     "schedule": {
+      "viewSchedule": "Consulter les horaires",
       "wednesday": "Mercredi",
       "sunday": "Dimanche (culte)",
       "languages": "Français | Espagnol"

@@ -18,21 +18,40 @@ export function Schedule()
 
   return (
     <div id='horarios' className="schedule-section">
+      <div className="schedule-decoration-top">
+        <div className="decoration-line"></div>
+        <div className="decoration-circle"></div>
+        <div className="decoration-line"></div>
+      </div>
       <Container>
         <Row className="justify-content-center">
-          <Col xs={12} md={8} lg={6}>
-            <Button 
-              onClick={handleShow} 
-              className="schedule-button w-100"
-            >
-              <span className="schedule-button-text">{t('header.schedule')}</span>
-              <div className="schedule-button-icon">
-                <i className="fas fa-clock"></i>
+          
+          <Col xs={12} md={8} lg={6} className="position-relative">
+            <div className="schedule-card">
+              <div className="schedule-card-content">
+                <div className="schedule-icon-container">
+                  <i className="fas fa-church"></i>
+                </div>
+                <Button 
+                  onClick={handleShow} 
+                  className="schedule-button w-100"
+                >
+                  <span className="schedule-button-text">{t('schedule.viewSchedule')}</span>
+                  <div className="schedule-button-icon">
+                    <i className="fas fa-clock"></i>
+                  </div>
+                </Button>
+              
               </div>
-            </Button>
+            </div>
           </Col>
         </Row>
       </Container>
+      <div className="schedule-decoration-bottom">
+        <div className="decoration-line"></div>
+        <div className="decoration-circle"></div>
+        <div className="decoration-line"></div>
+      </div>
 
       <Modal 
         show={showModal} 

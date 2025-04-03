@@ -1,6 +1,6 @@
 /* Presentacion */
 .presentacion-container {
-  background-image: url('/public/images/SobreNosotrosBG.jpg'); 
+  background-image: url('/public/images/Presentation-bg.jpg'); 
   background-size: cover;
   background-position: center;
   height: 1000px;
@@ -102,22 +102,93 @@ footer {
 .schedule-section {
   padding: 60px 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-height: 750px;
-  background-image: url('/public/images/Presentation-bg.jpg');
+  min-height: 450px;
+  background-image: url('/public/images/AboutUs-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
+}
+
+.schedule-decoration-top,
+.schedule-decoration-bottom {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  max-width: 800px;
+  margin: 20px 0;
+}
+
+.decoration-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+
+.decoration-circle {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 20px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.schedule-title {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.schedule-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.schedule-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.schedule-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.schedule-icon-container {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(45deg, rgb(9, 72, 114), #3498db);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(9, 72, 114, 0.3);
+}
+
+.schedule-icon-container i {
+  font-size: 2.5rem;
+  color: white;
 }
 
 .schedule-button {
   background: linear-gradient(45deg, rgb(9, 72, 114), #3498db);
   border: none;
-  padding: 20px 40px;
+  padding: 1.5rem;
   border-radius: 15px;
   color: white;
-  font-size: 1.5em;
+  font-size: 1.2em;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -125,17 +196,33 @@ footer {
   justify-content: center;
   gap: 15px;
   box-shadow: 0 4px 15px rgba(9, 72, 114, 0.3);
+  width: 100%;
 }
 
 .schedule-button:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(9, 72, 114, 0.4);
   background: linear-gradient(45deg, #3498db, rgb(9, 72, 114));
 }
 
-.schedule-button-icon {
-  font-size: 1.2em;
+.schedule-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.highlight-item {
+  display: flex;
   align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-size: 1rem;
+}
+
+.highlight-item i {
+  font-size: 1.2rem;
+  color: #ffd700;
 }
 
 .schedule-modal-backdrop {
@@ -712,7 +799,7 @@ footer {
 }
 
 .about-hero {
-  background-image: url('/public/images/Presentation-bg.jpg');
+  background-image: url('/public/images/SobreNosotrosBG.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -873,7 +960,7 @@ footer {
 .site-header {
   display: flex;
   width: 100%;
-  background: linear-gradient(135deg, #f5f5f5f6 0%, #e0e0e0 100%);
+  background: rgb(255, 255, 255);
   position: fixed;
   top: 0;
   left: 0;
@@ -884,8 +971,11 @@ footer {
 .navigation-bar {
   background-color: transparent;
   padding: 0.1rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
+}
+
+.navbar-collapse.show {
+  display: block;
 }
 
 .logo-section {
@@ -906,8 +996,14 @@ footer {
   transition: transform 0.3s ease;
 }
 
-.header-logo:hover {
-  transform: scale(1.05);
+.navbar-toggler {
+  border: none;
+  padding: 0;
+  margin-right: 1rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
 }
 
 .navbar-nav {
@@ -918,8 +1014,8 @@ footer {
 }
 
 .nav-link {
-  color: #000000 !important;
-  font-size: 0.75rem !important;
+  color: #333 !important;
+  font-size: 1rem !important;
   padding: 0.3rem 0.4rem !important;
   transition: all 0.3s ease;
   position: relative;
@@ -954,13 +1050,13 @@ footer {
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   color: white;
-  font-size: 0.75rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
   margin-left: 0.5rem;
 }
 
 .language-toggle:hover {
-  transform: translateY(-2px);
+  transform: translateY(-5px);
   box-shadow: 0 4px 15px rgba(86, 196, 204, 0.2);
 }
 
@@ -975,18 +1071,30 @@ footer {
     height: 40px;
   }
 
-  .nav-link {
-    font-size: 0.7rem !important;
-    padding: 0.2rem 0.3rem !important;
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    background: white;
+    padding: 1rem;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   }
 
-  .language-toggle {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
+  .navbar-collapse.show {
+    display: block;
   }
 
   .navbar-nav {
-    gap: 0.1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem !important;
+    padding: 0.5rem !important;
+    width: 100%;
   }
 }
 
@@ -1001,37 +1109,37 @@ footer {
     height: 35px;
   }
 
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    background: white;
+    padding: 1rem;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-collapse.show {
+    display: block;
+  }
+
   .navbar-nav {
     flex-direction: column;
-    align-items: center;
-    padding: 0.5rem 0;
+    align-items: flex-start;
+    padding: 0;
   }
 
   .nav-link {
-    font-size: 0.85rem !important;
+    font-size: 0.9rem !important;
     padding: 0.4rem !important;
     width: 100%;
-    text-align: center;
   }
 
   .language-toggle {
-    margin: 0.5rem auto;
-    display: block;
-    font-size: 0.8rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    font-size: 1.2rem;
     padding: 0.3rem 0.8rem;
-  }
-}
-
-/* Très petits écrans */
-@media (max-width: 375px) {
-  .header-logo {
-    width: 30px;
-    height: 30px;
-  }
-
-  .nav-link {
-    font-size: 0.8rem !important;
-    padding: 0.3rem !important;
   }
 }
 
@@ -1047,23 +1155,6 @@ header {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  animation: gradient 3s ease infinite;
-  background-size: 200% 200%;
-}
-
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 .header-content {
   display: flex;
   align-items: center;
@@ -1072,8 +1163,8 @@ header::before {
 }
 
 .header-logo {
-  width: 160px;
-  height: 160px;
+  width: 100px;
+  height: 100px;
   margin-right: 30px;
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(86, 196, 204, 0.3);
@@ -1097,17 +1188,6 @@ header::before {
   background-color: transparent;
   width: 100%;
   position: relative;
-}
-
-.navbar::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(86, 196, 204, 0.5), transparent);
 }
 
 .navbar-nav {
