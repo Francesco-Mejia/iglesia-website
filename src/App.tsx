@@ -1,12 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import { useTranslation } from 'react-i18next';
 import './i18n/i18n.js';
 import { Header } from './Components/Header';
 import { Presentacion } from './Components/Presentacion';
@@ -20,12 +18,12 @@ import { Donations } from './Components/Donations';
 import { Contact } from './Components/Contact';
 import { AboutUsPage } from './pages/AboutUsPage';
 
-function HomePage() {
+const HomePage: React.FC = () => {
   return (
     <>
-      <Presentacion /><Events />
+      <Presentacion />
+      <Events />
       <Schedule />
-      
       <Map />
       <News />
       <Contact />
@@ -35,21 +33,29 @@ function HomePage() {
   );
 }
 
-function App() {
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutUsPage />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <div className="App">
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </div>
   );
-}
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout><HomePage /></Layout>,
+  },
+  {
+    path: "/about",
+    element: <Layout><AboutUsPage /></Layout>,
+  },
+]);
+
+const App: React.FC = () => {
+  return <RouterProvider router={router} />;
+};
 
 export default App;
