@@ -48,17 +48,9 @@ export function Map() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '',
   });
 
-  const [map, setMap] = React.useState<google.maps.Map | null>(null);
+  if (!isLoaded) return null;
 
-  const onLoad = React.useCallback(function callback(map: google.maps.Map) {
-    setMap(map);
-  }, []);
-
-  const onUnmount = React.useCallback(function callback() {
-    setMap(null);
-  }, []);
-
-  return isLoaded ? (
+  return (
     <section className="map-section" id="ubicacion">
       <Container fluid className="px-4 py-5">
         <div className="map-container">
@@ -66,8 +58,6 @@ export function Map() {
             mapContainerStyle={containerStyle}
             center={center}
             zoom={15}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
             options={options}
           >
             <Marker 
@@ -79,5 +69,5 @@ export function Map() {
         </div>
       </Container>
     </section>
-  ) : <></>;
+  );
 }
