@@ -1,20 +1,32 @@
 [
     {
-      "title": "Conferencia de Avivamiento / Conference de renaissance",
-      "date": "2024-03-15",
-      "description": "Un tiempo de alabanza y enseñanza inspiradora.",
-      "banner": "/images/background.jpg"
+      "title": "Primer culto especial/ Premier culte spécial",
+      "date": "2025-04-16 18:45",
+      "description": "Culto especial por la semana santa / Culte spécial pour la semaine Sainte",
+      "banner": "/images/culto1.jpg"
     },
     {
-      "title": "Cena de la Amistad",
-      "date": "2024-04-01",
-      "description": "Un evento para compartir y construir comunidad.",
-      "banner": "/images/background2.jpg"
+      "title": "Segundo culto especial/ Deuxième culte spécial",
+      "date": "2025-04-18 18:45",
+      "description": "Culto especial por la semana santa / Culte spécial pour la semaine Sainte",
+      "banner": "/images/culto3.jpg"
     },
     {
-      "title": "Vigilia de Oración",
-      "date": "2024-05-23",
-      "description": "Una vigilia para y construir en comunidad.",
-      "banner": "/images/background2.jpg"
+      "title": "Tercer culto especial/ Troisième culte spécial",
+      "date": "2025-04-20 10:00",
+      "description": "Culto especial por la semana santa / Culte spécial pour la semaine Sainte",
+      "banner": "/images/culto5.jpg"
+    },
+    {
+      "title": "Culto devocional/ Culte dévotionnel",
+      "date": "Domingos / Dimanches : 10:00 - 12:00 / 16:45 - 18:45",
+      "description": "Todos los domingos en la mañana y en la tarde / Tous les dimanches en matinée et l'après-midi",
+      "banner": "/images/culto4.jpg"
+    },
+    {
+      "title": "Culto los miercoles/ Culte les mercredis",
+      "date": "18:45 - 20:30",
+      "description": "Todos los miercoles / Tous les mercredis",
+      "banner": "/images/culto6.jpg"
     }
 ]
