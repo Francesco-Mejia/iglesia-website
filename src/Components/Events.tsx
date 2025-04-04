@@ -30,13 +30,6 @@ export function Events ()
     }
   }, []);
 
-  const handleEventUpdate = (index: number, updatedEvent: Event) => {
-    const newEvents = [...events];
-    newEvents[index] = updatedEvent;
-    setEvents(newEvents);
-    localStorage.setItem('events', JSON.stringify(newEvents));
-  };
-
   const settings = {
     dots: true,
     infinite: true,
@@ -73,9 +66,9 @@ export function Events ()
   return (
     <div className="events-container" id='eventos'>
       <Container>
-        
         <Row>
           <Col xs={12}>
+            <h2 className="text-center mb-4">{t('events.title')}</h2>
             <div className="events-slider-container">
               <Slider {...settings}>
                 {events.map((event, index) => (

@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Container, Row, Col, Form } from 'react-bootstrap';
 
-interface Steps {
-  [key: string]: string[];
-}
-
 export function Donations() {
   const [donationAmount, setDonationAmount] = useState<string>('0.00');
   const [interacEmail, setInteracEmail] = useState<string>('');

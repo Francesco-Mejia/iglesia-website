@@ -37,7 +37,7 @@ export function LiveStream() {
       return;
     }
 
-    const shouldFetch = Date.now() - lastFetchTime > CACHE_DURATION;
+    const shouldFetch = !lastFetchTime || (Date.now() - lastFetchTime) > CACHE_DURATION;
 
     const checkLiveStatus = async () => {
       try {
@@ -74,7 +74,7 @@ export function LiveStream() {
       checkLiveStatus();
       fetchPastStreams();
     }
-  }, [channelId, YOUTUBE_API_KEY, lastFetchTime]);
+  }, [channelId, YOUTUBE_API_KEY, lastFetchTime, CACHE_DURATION]);
 
   const handleVideoClick = (video: StreamItem) => {
     setSelectedVideo(video);

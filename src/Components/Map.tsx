@@ -15,7 +15,7 @@ const center = {
   lng: -71.2418548055773,
 };
 
-const options = {
+const options: google.maps.MapOptions = {
   disableDefaultUI: false,
   zoomControl: true,
   mapTypeControl: true,
@@ -25,18 +25,18 @@ const options = {
   fullscreenControl: true,
   styles: [
     {
-      featureType: 'all',
-      elementType: 'labels.text.fill',
+      featureType: "all" as google.maps.MapTypeStyleFeatureType,
+      elementType: "labels.text.fill" as google.maps.MapTypeStyleElementType,
       stylers: [{ color: '#333333' }]
     },
     {
-      featureType: 'water',
-      elementType: 'geometry',
+      featureType: "water" as google.maps.MapTypeStyleFeatureType,
+      elementType: "geometry" as google.maps.MapTypeStyleElementType,
       stylers: [{ color: '#e9e9e9' }]
     },
     {
-      featureType: 'landscape',
-      elementType: 'geometry',
+      featureType: "landscape" as google.maps.MapTypeStyleFeatureType,
+      elementType: "geometry" as google.maps.MapTypeStyleElementType,
       stylers: [{ color: '#f5f5f5' }]
     }
   ]
@@ -45,7 +45,7 @@ const options = {
 export function Map() {
   const { isLoaded } = useJsApiLoader({
     id: 'googleMaps',
-    googleMapsApiKey: 'AIzaSyDlhfK31EYCr7rqbpmNYyOPN7C2wLY5ayI',
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '',
   });
 
   const [map, setMap] = React.useState<google.maps.Map | null>(null);
@@ -54,7 +54,7 @@ export function Map() {
     setMap(map);
   }, []);
 
-  const onUnmount = React.useCallback(function callback(map: google.maps.Map) {
+  const onUnmount = React.useCallback(function callback() {
     setMap(null);
   }, []);
 
