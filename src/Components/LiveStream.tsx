@@ -25,6 +25,7 @@ export function LiveStream() {
   const [pastStreams, setPastStreams] = useState<StreamItem[]>([]);
   const [selectedVideo, setSelectedVideo] = useState<StreamItem | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const channelId = 'UCnnolqv1eRbnz-XJDcGjpuw';
   const [error, setError] = useState<string | null>(null);
   const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
@@ -32,48 +33,56 @@ export function LiveStream() {
   const [lastFetchTime, setLastFetchTime] = useState<number>(0);
 
   useEffect(() => {
-    if (!YOUTUBE_API_KEY) {
-      setError('La clé API YouTube n\'est pas configurée');
-      return;
-    }
+    const fetchData = async () => {
+      setIsLoading(true);
+      setError(null);
 
-    const shouldFetch = !lastFetchTime || (Date.now() - lastFetchTime) > CACHE_DURATION;
-
-    const checkLiveStatus = async () => {
-      try {
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=live&type=video&key=${YOUTUBE_API_KEY}`);
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(`Erreur API YouTube: ${errorData.error?.message || response.statusText}`);
-        }
-        const data = await response.json();
-        setIsLive(data.items && data.items.length > 0);
-      } catch (error) {
-        console.error('Erreur lors de la vérification du statut en direct:', error);
+      if (!YOUTUBE_API_KEY) {
+        setError('La clé API YouTube n\'est pas configurée. Veuillez vérifier le fichier .env');
+        setIsLoading(false);
+        return;
       }
-    };
 
-    const fetchPastStreams = async () => {
+      const shouldFetch = !lastFetchTime || (Date.now() - lastFetchTime) > CACHE_DURATION;
+      if (!shouldFetch) {
+        setIsLoading(false);
+        return;
+      }
+
       try {
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=completed&type=video&order=date&maxResults=3&key=${YOUTUBE_API_KEY}`);
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(`Erreur API YouTube: ${errorData.error?.message || response.statusText}`);
+        // Vérifier le statut en direct
+        const liveResponse = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=live&type=video&key=${YOUTUBE_API_KEY}`
+        );
+        
+        if (!liveResponse.ok) {
+          throw new Error(`Erreur API YouTube (${liveResponse.status}): ${liveResponse.statusText}`);
         }
-        const data = await response.json();
-        setPastStreams(data.items || []);
-        setError(null);
+        
+        const liveData = await liveResponse.json();
+        setIsLive(liveData.items && liveData.items.length > 0);
+
+        // Récupérer les diffusions passées
+        const pastResponse = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=completed&type=video&order=date&maxResults=3&key=${YOUTUBE_API_KEY}`
+        );
+
+        if (!pastResponse.ok) {
+          throw new Error(`Erreur API YouTube (${pastResponse.status}): ${pastResponse.statusText}`);
+        }
+
+        const pastData = await pastResponse.json();
+        setPastStreams(pastData.items || []);
         setLastFetchTime(Date.now());
-      } catch (error) {
-        console.error('Erreur lors de la récupération des diffusions passées:', error);
-        setError(error instanceof Error ? error.message : 'Une erreur est survenue lors de la récupération des diffusions passées');
+      } catch (err) {
+        console.error('Erreur lors de la récupération des données:', err);
+        setError(err instanceof Error ? err.message : 'Une erreur est survenue lors de la récupération des données');
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    if (shouldFetch) {
-      checkLiveStatus();
-      fetchPastStreams();
-    }
+    fetchData();
   }, [channelId, YOUTUBE_API_KEY, lastFetchTime, CACHE_DURATION]);
 
   const handleVideoClick = (video: StreamItem) => {
@@ -86,11 +95,41 @@ export function LiveStream() {
     setSelectedVideo(null);
   };
 
+  if (isLoading) {
+    return (
+      <div className="live-stream-container" id="transmisiones">
+        <Container>
+          <Row className="justify-content-center">
+            <Col xs={12} className="text-center">
+              <h3>{t('livestream.loading')}</h3>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="live-stream-container" id="transmisiones">
+        <Container>
+          <Row className="justify-content-center">
+            <Col xs={12} className="text-center">
+              <h3 className="text-danger">{error}</h3>
+              <p>{t('livestream.tryAgain')}</p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    );
+  }
+
   return (
     <div className="live-stream-container" id="transmisiones">
       <Container>
         <Row className="justify-content-center mb-5">
           <Col xs={12} className="text-center">
+            <h2>{t('livestream.title')}</h2>
           </Col>
         </Row>
         
@@ -114,7 +153,7 @@ export function LiveStream() {
         ) : (
           <Row className="justify-content-center mb-5">
             <Col xs={12} className="text-center">
-              
+              <p>{t('livestream.noLiveStream')}</p>
             </Col>
           </Row>
         )}
@@ -144,15 +183,7 @@ export function LiveStream() {
             ))
           ) : (
             <Col xs={12} className="text-center">
-              <p className="no-streams">
-                {error ? (
-                  <span className="text-danger">
-                    {t('livestream.error')}: {error}
-                  </span>
-                ) : (
-                  t('livestream.noPastStreams')
-                )}
-              </p>
+              <p className="no-streams">{t('livestream.noPastStreams')}</p>
             </Col>
           )}
         </Row>
