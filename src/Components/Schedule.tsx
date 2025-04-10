@@ -30,7 +30,7 @@ export function Schedule()
             <div className="schedule-card">
               <div className="schedule-card-content">
                 <div className="schedule-icon-container">
-                  <i className="fas fa-church"></i>
+                  <i className="fas fa-door-open"></i>
                 </div>
                 <Button 
                   onClick={handleShow} 
