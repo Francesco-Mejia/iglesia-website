@@ -62,14 +62,16 @@
         "emailPlaceholder": "Entrez votre email Interac",
         "instructions": "Instructions pour le don :",
         "steps": [
-          "Entrez votre email Interac",
+          "Entrez l'email Interac de l'église dans votre application bancaire",
           "Entrez le montant du don",
-          "Cliquez sur 'Envoyer'",
-          "Acceptez la demande de paiement dans votre application bancaire"
+          "Notez le but du don (dîme, offrande, etc.)",
+          "Cliquez sur 'Envoyer'"
         ],
         "send": "Envoyer la demande de paiement",
         "processing": "Traitement en cours...",
-        "error": "Une erreur est survenue lors du traitement de la demande"
+        "error": "Une erreur est survenue lors du traitement de la demande",
+        "password": "Mot de passe :",
+        "note": "Note: Ce mot de passe est le même pour toutes les transactions."
       }
     },
     "livestream": {

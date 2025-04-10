@@ -58,18 +58,21 @@
       "success": "Transacción completada por",
       "interac": {
         "title": "Donación por Interac",
-        "email": "Correo Interac:",
+        "email": "Correo Interac :",
         "emailPlaceholder": "Ingrese su correo Interac",
         "instructions": "Instrucciones para la donación:",
         "steps": [
-          "Ingrese su correo Interac",
+          "Ingrese el correo Interac de la iglesia en su aplicación bancaria",
           "Ingrese el monto de la donación",
+          "Anote el proposito de la donación (diesmo, ofrenda, etc.)",
           "Haga clic en 'Enviar'",
           "Acepte la solicitud de pago en su aplicación bancaria"
         ],
         "send": "Enviar solicitud de pago",
         "processing": "Procesando...",
-        "error": "Se produjo un error al procesar la solicitud"
+        "error": "Se produjo un error al procesar la solicitud",
+        "password": "Contraseña :",
+        "note": "Nota: Esta contraseña es la misma para todas las transacciones."
       }
     },
     "livestream": {
