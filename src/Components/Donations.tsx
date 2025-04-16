@@ -5,7 +5,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 export function Donations() {
   const { t } = useTranslation();
   const CHURCH_INTERAC_EMAIL = "egliselerestedesagrace@hotmail.com";
-  const INTERAC_PASSWORD = "eglise2025"; // Mot de passe pour les virements non-automatisés
 
   return (
     <div className="donations-container" id="donaciones">
