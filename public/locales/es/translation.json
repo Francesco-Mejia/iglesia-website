@@ -71,8 +71,7 @@
         "send": "Enviar solicitud de pago",
         "processing": "Procesando...",
         "error": "Se produjo un error al procesar la solicitud",
-        "password": "Contraseña :",
-        "note": "Nota: Esta contraseña es la misma para todas las transacciones."
+        "note": "Nota: Tu deposito interac sera realizado automaticamente"
       }
     },
     "livestream": {

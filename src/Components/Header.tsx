@@ -60,6 +60,7 @@ export function Header() {
               <Nav.Link href="#horarios" onClick={() => setExpanded(false)}>{t('header.schedule')}</Nav.Link>
               <Nav.Link href="#ubicacion" onClick={() => setExpanded(false)}>{t('header.location')}</Nav.Link>
               <Nav.Link href="#transmisiones" onClick={() => setExpanded(false)}>{t('header.livestream')}</Nav.Link>
+              <Nav.Link href="#donaciones" onClick={() => setExpanded(false)}>{t('header.donations')}</Nav.Link>
               <Nav.Link as={Link} to="/about" onClick={() => setExpanded(false)}>{t('header.about')}</Nav.Link>
             </Nav>
           </Navbar.Collapse>

@@ -12,7 +12,7 @@ export function AboutUsPage() {
     mision: {
       title: t('about.mission.title'),
       text: t('about.mission.text'),
-      icon: '/images/mission-icon2.png'
+      icon: '/images/bible-icon.png'
     },
     vision: {
       title: t('about.vision.title'),

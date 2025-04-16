@@ -3,13 +3,13 @@
       "title": "Primer culto especial/ Premier culte spécial",
       "date": "2025-04-16 18:45",
       "description": "Culto especial por la semana santa / Culte spécial pour la semaine Sainte",
-      "banner": "/images/culto1.jpg"
+      "banner": "/images/culto9.jpg"
     },
     {
       "title": "Segundo culto especial/ Deuxième culte spécial",
       "date": "2025-04-18 18:45",
       "description": "Culto especial por la semana santa / Culte spécial pour la semaine Sainte",
-      "banner": "/images/culto3.jpg"
+      "banner": "/images/culto7.jpg"
     },
     {
       "title": "Tercer culto especial/ Troisième culte spécial",
@@ -21,12 +21,12 @@
       "title": "Culto devocional/ Culte dévotionnel",
       "date": "Domingos / Dimanches : 10:00 - 12:00 / 16:45 - 18:45",
       "description": "Todos los domingos en la mañana y en la tarde / Tous les dimanches en matinée et l'après-midi",
-      "banner": "/images/culto4.jpg"
+      "banner": "/images/culto8.jpg"
     },
     {
       "title": "Culto los miercoles/ Culte les mercredis",
       "date": "18:45 - 20:30",
       "description": "Todos los miercoles / Tous les mercredis",
-      "banner": "/images/culto6.jpg"
+      "banner": "/images/DONS.jpeg"
     }
 ]

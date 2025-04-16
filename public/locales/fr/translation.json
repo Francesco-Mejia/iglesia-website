@@ -70,8 +70,7 @@
         "send": "Envoyer la demande de paiement",
         "processing": "Traitement en cours...",
         "error": "Une erreur est survenue lors du traitement de la demande",
-        "password": "Mot de passe :",
-        "note": "Note: Ce mot de passe est le même pour toutes les transactions."
+        "note": "Note: Ton depot interac sera effectué automatiquement"
       }
     },
     "livestream": {

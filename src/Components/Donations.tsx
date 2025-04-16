@@ -33,7 +33,6 @@ export function Donations() {
                 
                 <div className="church-interac-info">
                   <p><strong>{t('donations.interac.email')}</strong> {CHURCH_INTERAC_EMAIL}</p>
-                  <p><strong>{t('donations.interac.password')}</strong> {INTERAC_PASSWORD}</p>
                   <p className="note">{t('donations.interac.note')}</p>
                 </div>
               </div>
