@@ -17,6 +17,7 @@ import { News } from './Components/News';
 import { Donations } from './Components/Donations';
 import { Contact } from './Components/Contact';
 import { AboutUsPage } from './pages/AboutUsPage';
+import { Gallery } from './pages/Gallery';
 
 const HomePage: React.FC = () => {
   return (
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <Layout><AboutUsPage /></Layout>,
+  },
+  {
+    path: "/gallery",
+    element: <Layout><Gallery /></Layout>,
   },
 ]);
 

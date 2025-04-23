@@ -153,7 +153,7 @@ export function LiveStream() {
         ) : (
           <Row className="justify-content-center mb-5">
             <Col xs={12} className="text-center">
-              <p>{t('livestream.noLiveStream')}</p>
+              
             </Col>
           </Row>
         )}

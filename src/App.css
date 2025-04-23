@@ -1254,3 +1254,256 @@ header {
     top: -5px;
   }
 }
+
+/* Styles améliorés pour la galerie */
+.gallery-container {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 80px auto 0;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(245, 245, 245, 0.9));
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #56c4cc, #3498db, #56c4cc);
+  animation: gradient 3s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gallery-container h1 {
+  text-align: center;
+  margin: 2rem 0 3rem 0;
+  color: #333;
+  width: 100%;
+  font-size: 2.5rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 1rem;
+  z-index: 1;
+}
+
+.gallery-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #56c4cc, #3498db);
+  border-radius: 3px;
+}
+
+.gallery-slider {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+}
+
+.gallery-slider::before,
+.gallery-slider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 80%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.9), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gallery-slider::before {
+  left: 0;
+}
+
+.gallery-slider::after {
+  right: 0;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.media-item {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 550px;
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+.media-item img,
+.media-item video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin: 0 auto;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  transition: all 0.5s ease;
+}
+
+/* Style spécifique pour les contrôles vidéo */
+.media-item video::-webkit-media-controls {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.media-item video::-webkit-media-controls-panel {
+  background-color: transparent;
+}
+
+.slick-current .media-item img {
+  transform: scale(1);
+}
+
+/* Styles améliorés pour les flèches du slider */
+.slick-prev,
+.slick-next {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.slick-prev {
+  left: -10px;
+}
+
+.slick-next {
+  right: -10px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px;
+  color: #3498db;
+  opacity: 1;
+}
+
+/* Styles améliorés pour les points de navigation */
+.slick-dots {
+  bottom: -50px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.slick-dots li {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+}
+
+.slick-dots li button {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+}
+
+.slick-dots li button:before {
+  font-size: 0;
+  width: 12px;
+  height: 12px;
+  background: #ddd;
+  border-radius: 50%;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.slick-dots li.slick-active button:before {
+  background: #3498db;
+  transform: scale(1.2);
+}
+
+/* Animation pour le chargement des images */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.media-item img {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .gallery-container {
+    padding: 3rem 1rem;
+  }
+
+  .gallery-container h1 {
+    font-size: 2rem;
+  }
+
+  .media-item {
+    height: 400px;
+    padding: 20px;
+  }
+
+  .slick-prev {
+    left: -5px;
+  }
+
+  .slick-next {
+    right: -5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-container {
+    padding: 2rem 0.5rem;
+  }
+
+  .gallery-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .media-item {
+    height: 300px;
+    padding: 15px;
+  }
+
+  .slick-prev,
+  .slick-next {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Assurer que le contenu principal prend toute la hauteur disponible */
+.main-content {
+  min-height: calc(100vh - 60px); /* Ajustez 60px selon la hauteur de votre footer */
+  display: flex;
+  flex-direction: column;
+}

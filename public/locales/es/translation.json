@@ -14,7 +14,8 @@
       "news": "Noticias",
       "contact": "Contacto",
       "donations": "Donaciones",
-      "livestream": "Transmisiones en vivo"
+      "livestream": "Transmisiones en vivo",
+      "gallery": "Galería"
     },
     "about": {
       "title": "Sobre Nosotros",
@@ -84,5 +85,8 @@
       "watchNow": "Ver Ahora",
       "noPastStreams": "No hay transmisiones pasadas disponibles",
       "error": "Se produjo un error al cargar las transmisiones"
+    },
+    "gallery": {
+      "title": "Galería"
     }
   }
