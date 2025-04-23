@@ -16,10 +16,10 @@ export const Gallery: React.FC = () => {
   };
 
   const media = [
-    '/images/logo_iglesia.jpg',
-    '/images/culto7.jpg',
-    '/images/culto8.jpg',
-    '/images/Les_difficultés.mp4',
+    { src: '/images/logo_iglesia.jpg', description: 'Logo de notre église' },
+    { src: '/images/culto7.jpg', description: 'Moment de culte et adoration' },
+    { src: '/images/culto8.jpg', description: 'Célébration communautaire' },
+    { src: '/images/Les_difficultés.mp4', description: 'Vidéo sur les difficultés' },
   ];
 
   const isVideo = (path: string) => {
@@ -33,18 +33,23 @@ export const Gallery: React.FC = () => {
         <Slider {...settings}>
           {media.map((item, index) => (
             <div key={index} className="media-item">
-              {isVideo(item) ? (
+              {isVideo(item.src) ? (
                 <video 
                   controls 
                   autoPlay={false}
                   muted
                   style={{ maxWidth: '100%', height: 'auto' }}
+                  title={item.description}
                 >
-                  <source src={item} type="video/mp4" />
+                  <source src={item.src} type="video/mp4" />
                   Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
               ) : (
-                <img src={item} alt={`Photo de l'église ${index + 1}`} />
+                <img 
+                  src={item.src} 
+                  alt={item.description}
+                  aria-label={item.description}
+                />
               )}
             </div>
           ))}
