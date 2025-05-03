@@ -26,6 +26,7 @@ export function LiveStream() {
   const [selectedVideo, setSelectedVideo] = useState<StreamItem | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [liveVideoId, setLiveVideoId] = useState<string | null>(null);
   const channelId = 'UCnnolqv1eRbnz-XJDcGjpuw';
   const [error, setError] = useState<string | null>(null);
   const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
@@ -60,7 +61,10 @@ export function LiveStream() {
         }
         
         const liveData = await liveResponse.json();
-        setIsLive(liveData.items && liveData.items.length > 0);
+        const isCurrentlyLive = liveData.items && liveData.items.length > 0;
+        const currentLiveVideoId = isCurrentlyLive ? liveData.items[0].id.videoId : null;
+        setLiveVideoId(currentLiveVideoId);
+        setIsLive(isCurrentlyLive);
 
         // Récupérer les diffusions passées
         const pastResponse = await fetch(
@@ -133,7 +137,7 @@ export function LiveStream() {
           </Col>
         </Row>
         
-        {isLive ? (
+        {isLive && (
           <Row className="justify-content-center mb-5">
             <Col xs={12} className="position-relative">
               <div className="live-indicator">
@@ -142,18 +146,12 @@ export function LiveStream() {
               </div>
               <div className="ratio ratio-16x9">
                 <iframe
-                  src={`https://www.youtube.com/embed/live/${channelId}`}
+                  src={`https://www.youtube.com/embed/${liveVideoId}?autoplay=1`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   title="Live Stream"
                 />
               </div>
-            </Col>
-          </Row>
-        ) : (
-          <Row className="justify-content-center mb-5">
-            <Col xs={12} className="text-center">
-              
             </Col>
           </Row>
         )}
