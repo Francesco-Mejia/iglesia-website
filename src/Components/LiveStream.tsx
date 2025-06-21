@@ -131,11 +131,6 @@ export function LiveStream() {
   return (
     <div className="live-stream-container" id="transmisiones">
       <Container>
-        <Row className="justify-content-center mb-5">
-          <Col xs={12} className="text-center">
-            <h2>{t('livestream.title')}</h2>
-          </Col>
-        </Row>
         
         {isLive && (
           <Row className="justify-content-center mb-5">
