@@ -50,21 +50,14 @@ export function Header() {
         <Link to="/" className="logo-link" onClick={() => setOpen(false)}>
           <img src="/images/logo_iglesia.jpg" alt={t('title')} className="header-logo" />
         </Link>
-        <button
-          type="button"
-          className="menu-toggle"
-          aria-expanded={open}
-          aria-controls="site-nav"
-          onClick={() => setOpen((value) => !value)}
-        >
-          {menuLabel}
-        </button>
         <nav id="site-nav" className="nav">
           {NAV.map((item) => (
             <Link key={item.href} to={item.href} onClick={() => setOpen(false)}>
               {t(item.key)}
             </Link>
           ))}
+        </nav>
+        <div className="header-tools">
           <div className="lang-toggle" role="group" aria-label={spanish ? 'Idioma' : 'Langue'}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.6" />
@@ -90,7 +83,16 @@ export function Header() {
               ES
             </button>
           </div>
-        </nav>
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-expanded={open}
+            aria-controls="site-nav"
+            onClick={() => setOpen((value) => !value)}
+          >
+            {menuLabel}
+          </button>
+        </div>
       </div>
     </header>
   );

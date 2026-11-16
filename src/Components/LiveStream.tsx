@@ -2,9 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Reveal } from './Reveal';
 
-const channelId = 'UCnnolqv1eRbnz-XJDcGjpuw';
 const uploadsPlaylist = 'UUnnolqv1eRbnz-XJDcGjpuw';
-const channelUrl = `https://www.youtube.com/channel/${channelId}`;
 
 interface PastStream {
   id: string;
@@ -183,11 +181,6 @@ export function LiveStream() {
     <Reveal id="transmisiones" className="is-band">
       <div className="wrap">
         <h2 className="t-stagger-line t-stagger-line--1">{t('livestream.title')}</h2>
-        <p>
-          <a className="text-link" href={channelUrl} target="_blank" rel="noopener noreferrer">
-            {t('livestream.channel')}
-          </a>
-        </p>
         <div className="player" ref={playerBoxRef} />
         {past.length > 0 && (
           <>
