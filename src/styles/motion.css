@@ -1,0 +1,122 @@
+/* Lines start translated down + blurred + invisible; .is-shown
+   on the parent flips them to their resting state. The second
+   line's transition-delay holds it back by --stagger-stagger
+   so the eye lands on the headline first. */
+.t-stagger-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(var(--stagger-distance));
+  filter: blur(var(--stagger-blur));
+  transition:
+    opacity   var(--stagger-dur) var(--stagger-ease),
+    transform var(--stagger-dur) var(--stagger-ease),
+    filter    var(--stagger-dur) var(--stagger-ease);
+  will-change: transform, opacity, filter;
+}
+.t-stagger-line--2 { transition-delay: var(--stagger-stagger); }
+.t-stagger-line--3 { transition-delay: calc(var(--stagger-stagger) * 2); }
+.t-stagger-line--4 { transition-delay: calc(var(--stagger-stagger) * 3); }
+
+.t-stagger.is-shown .t-stagger-line {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+/* Exit decouples from the stagger: same fade for every line,
+   no Y return, no blur — so the disappearance reads as a
+   single quiet fade instead of a reverse reveal. */
+.t-stagger.is-hiding .t-stagger-line {
+  opacity: 0;
+  transform: translateY(0);
+  filter: blur(0);
+  transition:
+    opacity 200ms ease,
+    transform 0s linear,
+    filter 0s linear;
+  transition-delay: 0s;
+}
+
+.reveal-photo {
+  opacity: 0;
+  transform: translateY(var(--stagger-distance));
+  filter: blur(var(--stagger-blur));
+  transition:
+    opacity var(--stagger-dur) var(--stagger-ease),
+    transform var(--stagger-dur) var(--stagger-ease),
+    filter var(--stagger-dur) var(--stagger-ease);
+}
+
+.reveal-photo--plain {
+  transform: none;
+  filter: none;
+  transition: opacity var(--stagger-dur) var(--stagger-ease);
+}
+
+main > .chapter {
+  transform: translateY(28px);
+  transition: transform var(--duration-very-slow) var(--ease-smooth-out);
+}
+
+main > .chapter.is-shown {
+  transform: translateY(0);
+}
+
+.chapter.is-shown .reveal-photo {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.frame img {
+  transition: transform var(--duration-slow) var(--ease-smooth-out);
+}
+
+.frame:hover img {
+  transform: scale(1.03);
+}
+
+.lift {
+  transition: transform var(--duration-fast) var(--ease-smooth-out);
+}
+
+.lift:hover {
+  transform: translateY(-2px);
+}
+
+.lift:active {
+  transform: translateY(1px);
+}
+
+.live-dot {
+  animation: live-pulse 1.4s var(--ease-in-out) infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main > .chapter {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .t-stagger-line { transition: none !important; }
+
+  .reveal-photo {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  .live-dot {
+    animation: none !important;
+  }
+
+  .frame img,
+  .lift {
+    transition: none !important;
+  }
+}

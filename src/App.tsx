@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { useTranslation } from 'react-i18next';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -12,7 +11,6 @@ import { LiveStream } from './Components/LiveStream';
 import { Schedule } from './Components/Schedule';
 import { Map } from './Components/Map';
 import { Footer } from './Components/Footer';
-import { Events } from './Components/Events';
 import { News } from './Components/News';
 import { Donations } from './Components/Donations';
 import { Contact } from './Components/Contact';
@@ -23,22 +21,25 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Presentacion />
-      <Events />
       <Schedule />
       <Map />
       <News />
-      <Contact />
       <LiveStream />
       <Donations />
+      <Contact />
     </>
   );
 }
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { i18n } = useTranslation();
+  const skip = i18n.language.startsWith('es') ? 'Ir al contenido' : 'Aller au contenu';
+
   return (
     <div className="App">
+      <a className="skip" href="#contenu">{skip}</a>
       <Header />
-      <main>{children}</main>
+      <main id="contenu">{children}</main>
       <Footer />
     </div>
   );

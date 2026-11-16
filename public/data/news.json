@@ -1,20 +1,17 @@
 [
-    {
-      "title": "Noviembre: El mes del Evangelismo / Novembre le mois de l'Evangile",
-      "date": "2025-11-01",
-      "content": "",
-      "image": "/images/Evangelismo-biblia.jpg"
+  {
+    "title": {
+      "fr": "Novembre, le mois de l'Évangile",
+      "es": "Noviembre: el mes del evangelismo"
     },
-    {
-      "title": "Ven y conoce a Dios / Viens et connais Dieu",
-      "date": "Todos los miercoles y domingos / Tous les mercredis et les dimanches",
-      "content": "",
-      "image": "/images/Banner_Horarios_Iglesia.jpg"
+    "date": {
+      "fr": "1 novembre 2026",
+      "es": "1 de noviembre de 2026"
     },
-    {
-      "title": "Dirección/ Adresse",
-      "date": "Québec, QC, Canada",
-      "content": "766 Rue Kirouac, suite 201, Québec, QC G1N 2J4",
-      "image": "/images/AdresseEglise.png"
-    }
+    "content": {
+      "fr": "",
+      "es": ""
+    },
+    "image": "/images/Evangelismo-biblia.jpg"
+  }
 ]

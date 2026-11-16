@@ -1,84 +1,70 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
-import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+import React, { useEffect, useRef } from 'react';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import { useTranslation } from 'react-i18next';
+import { Reveal } from './Reveal';
 
-const containerStyle = {
-  width: '100%',
-  height: '600px',
-  borderRadius: '12px',
-  overflow: 'hidden',
-  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'
-};
-
-const center = {
-  lat: 46.80464968967547,
-  lng: -71.2418548055773,
-};
+const LAT = 46.80464968967547;
+const LNG = -71.2418548055773;
 
 export function Map() {
-  const { isLoaded } = useJsApiLoader({
-    id: 'googleMaps',
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '',
-    version: "weekly",
-    language: "fr",
-    region: "CA"
-  });
+  const { t } = useTranslation();
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  if (!isLoaded) return null;
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
 
-  const options = {
-    disableDefaultUI: false,
-    zoomControl: true,
-    mapTypeControl: true,
-    scaleControl: true,
-    streetViewControl: true,
-    rotateControl: true,
-    fullscreenControl: true,
-    mapTypeId: 'roadmap',
-    clickableIcons: true,
-    draggable: true,
-    scrollwheel: true,
-    disableDoubleClickZoom: false,
-    styles: [
-      {
-        featureType: "all",
-        elementType: "labels.text.fill",
-        stylers: [{ color: '#333333' }]
-      },
-      {
-        featureType: "water",
-        elementType: "geometry",
-        stylers: [{ color: '#e9e9e9' }]
-      },
-      {
-        featureType: "landscape",
-        elementType: "geometry",
-        stylers: [{ color: '#f5f5f5' }]
-      }
-    ]
-  };
+    const map = new maplibregl.Map({
+      container,
+      style: 'https://tiles.openfreemap.org/styles/positron',
+      center: [LNG, LAT],
+      zoom: 15,
+      scrollZoom: false,
+      dragRotate: false,
+      pitchWithRotate: false,
+    });
 
-  const markerProps = {
-    position: center,
-    animation: window.google.maps.Animation.DROP,
-    title: "Eglise Le Reste De Sa Grace / Iglesia El Remanente de Su Gracia",
-    clickable: true
-  };
+    const popup = new maplibregl.Popup({ offset: 28, className: 'church-popup' }).setHTML(
+      '<strong>Eglise Le Reste De Sa Grace</strong><br />Iglesia El Remanente de Su Gracia'
+    );
+
+    const marker = new maplibregl.Marker({ color: '#161616' })
+      .setLngLat([LNG, LAT])
+      .setPopup(popup)
+      .addTo(map);
+
+    const resize = () => map.resize();
+    map.on('load', resize);
+
+    return () => {
+      marker.remove();
+      map.remove();
+    };
+  }, []);
 
   return (
-    <section className="map-section" id="ubicacion">
-      <Container fluid className="px-4 py-5">
-        <div className="map-container">
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={15}
-            options={options}
-          >
-            <Marker {...markerProps} />
-          </GoogleMap>
+    <Reveal id="ubicacion">
+      <div className="wrap">
+        <h2 className="t-stagger-line t-stagger-line--1">{t('header.location')}</h2>
+        <div className="map-layout">
+          <div>
+            <p className="place-street t-stagger-line t-stagger-line--2">{t('map.street')}</p>
+            <p className="place-detail">{t('map.detail')}</p>
+            <a
+              className="directions"
+              href="https://www.google.com/maps/dir/?api=1&destination=766%20Rue%20Kirouac%2C%20suite%20201%2C%20Quebec%2C%20QC"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t('map.directions')}
+            </a>
+          </div>
+          <div className="reveal-photo reveal-photo--plain">
+            <div className="map-frame" ref={containerRef} />
+          </div>
         </div>
-      </Container>
-    </section>
+      </div>
+    </Reveal>
   );
 }

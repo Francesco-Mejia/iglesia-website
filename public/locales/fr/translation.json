@@ -7,7 +7,7 @@
     "values": "Valeurs",
     "header": {
       "home": "Accueil",
-      "schedule": "Horaires",
+      "schedule": "Horaire",
       "about": "À propos",
       "location": "Adresse",
       "events": "Événements",
@@ -16,6 +16,11 @@
       "donations": "Dons",
       "livestream": "Diffusions en direct",
       "gallery": "Galerie"
+    },
+    "map": {
+      "street": "766 Rue Kirouac",
+      "detail": "Suite 201, Québec, QC",
+      "directions": "Itinéraire"
     },
     "about": {
       "title": "À propos de nous",
@@ -38,9 +43,11 @@
       "invitation": "Voulez-vous en savoir plus sur Jésus ? Nous vous invitons à nous rendre visite !"
     },
     "schedule": {
-      "viewSchedule": "Consulter les horaires",
+      "viewSchedule": "Consulter l'horaire",
       "wednesday": "Mercredi",
       "sunday": "Dimanche (culte)",
+      "sundayFrench": "Dimanche, culte en français",
+      "sundaySpanish": "Dimanche, culte en espagnol",
       "languages": "Français | Espagnol"
     },
     "events": {
@@ -83,9 +90,28 @@
       "pastStreams": "Remplissez vous du seigneur Jesus avec nos dernières diffusions",
       "watchNow": "Regarder",
       "noPastStreams": "Aucune diffusion passée disponible",
-      "error": "Une erreur est survenue lors du chargement des diffusions"
+      "prev": "Diffusions précédentes",
+      "next": "Diffusions suivantes",
+      "error": "Une erreur est survenue lors du chargement des diffusions",
+      "missingKey": "La clé API YouTube n'est pas configurée. Veuillez vérifier le fichier .env",
+      "channel": "Voir la chaîne YouTube"
     },
     "gallery": {
       "title": "Galerie"
+    },
+    "media": {
+      "worship": "Culte de l'église",
+      "bible": "Bible ouverte",
+      "community": "Communauté de l'église",
+      "video": "Vidéo sur les difficultés"
+    },
+    "footer": {
+      "names": "Eglise Le Reste De Sa Grace / Iglesia El Remanente De Su Gracia",
+      "address": "766 Rue Kirouac, suite 201, Quebec, QC",
+      "credit": "Photo : Sixteen Miles Out, Unsplash"
+    },
+    "motion": {
+      "pause": "Pause",
+      "play": "Reprendre"
     }
   }

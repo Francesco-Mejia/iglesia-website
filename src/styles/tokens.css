@@ -1,0 +1,29 @@
+:root {
+  --ink: #161616;
+  --paper: #f6f3ee;
+  --paper-2: #fffdf9;
+  --band: #ebe6dc;
+  --muted: #5e5a55;
+  --line: rgba(22, 22, 22, 0.12);
+  --sky: #7eb6e0;
+  --sky-deep: #2f6f9f;
+  --font-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --radius: 20px;
+  --header-h: 76px;
+  --wrap: 1120px;
+
+  --duration-fast: 250ms;
+  --duration-slow: 400ms;
+  --duration-very-slow: 500ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: ease-in-out;
+  --distance-medium: 12px;
+  --blur-medium: 3px;
+
+  --stagger-dur: 500ms;
+  --stagger-distance: 12px;
+  --stagger-stagger: 40ms;
+  --stagger-blur: 3px;
+  --stagger-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

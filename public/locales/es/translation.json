@@ -17,6 +17,11 @@
       "livestream": "Transmisiones en vivo",
       "gallery": "Galería"
     },
+    "map": {
+      "street": "766 Rue Kirouac",
+      "detail": "Suite 201, Quebec, QC",
+      "directions": "Cómo llegar"
+    },
     "about": {
       "title": "Sobre Nosotros",
       "mission": {
@@ -41,6 +46,8 @@
       "viewSchedule": "Consultar los horarios",
       "wednesday": "Miércoles",
       "sunday": "Domingo (culto devocional)",
+      "sundayFrench": "Domingo, culto en francés",
+      "sundaySpanish": "Domingo, culto en español",
       "languages": "Francés | Español"
     },
     "events": {
@@ -84,9 +91,28 @@
       "pastStreams": "Llenese del señor Jesus con nuestras últimas transmisiones",
       "watchNow": "Ver Ahora",
       "noPastStreams": "No hay transmisiones pasadas disponibles",
-      "error": "Se produjo un error al cargar las transmisiones"
+      "prev": "Transmisiones anteriores",
+      "next": "Transmisiones siguientes",
+      "error": "Se produjo un error al cargar las transmisiones",
+      "missingKey": "La clave API de YouTube no está configurada. Revise el archivo .env",
+      "channel": "Ver el canal de YouTube"
     },
     "gallery": {
       "title": "Galería"
+    },
+    "media": {
+      "worship": "Culto de la iglesia",
+      "bible": "Biblia abierta",
+      "community": "Comunidad de la iglesia",
+      "video": "Video sobre las dificultades"
+    },
+    "footer": {
+      "names": "Eglise Le Reste De Sa Grace / Iglesia El Remanente De Su Gracia",
+      "address": "766 Rue Kirouac, suite 201, Quebec, QC",
+      "credit": "Foto: Sixteen Miles Out, Unsplash"
+    },
+    "motion": {
+      "pause": "Pausa",
+      "play": "Reanudar"
     }
   }

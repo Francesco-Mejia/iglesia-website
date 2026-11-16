@@ -1,14 +1,47 @@
 [
-    {
-      "title": "Culto devocional/ Culte dévotionnel",
-      "date": "Domingos / Dimanches : 10:00 - 12:00 / 16:45 - 18:45",
-      "description": "Todos los domingos en la mañana y en la tarde / Tous les dimanches en matinée et l'après-midi",
-      "banner": "/images/culto8.jpg"
+  {
+    "title": {
+      "fr": "Culte en français",
+      "es": "Culto en francés"
     },
-    {
-      "title": "Culto los miercoles/ Culte les mercredis",
-      "date": "18:45 - 20:30",
-      "description": "Todos los miercoles / Tous les mercredis",
-      "banner": "/images/DONS.jpeg"
-    }
+    "date": {
+      "fr": "9 h 30",
+      "es": "9 h 30"
+    },
+    "description": {
+      "fr": "Tous les dimanches",
+      "es": "Todos los domingos"
+    },
+    "banner": "/images/culto8.jpg"
+  },
+  {
+    "title": {
+      "fr": "Culte en espagnol",
+      "es": "Culto en español"
+    },
+    "date": {
+      "fr": "12 h 00",
+      "es": "12 h 00"
+    },
+    "description": {
+      "fr": "Tous les dimanches",
+      "es": "Todos los domingos"
+    },
+    "banner": "/images/culto7.jpg"
+  },
+  {
+    "title": {
+      "fr": "Culte du mercredi",
+      "es": "Culto de los miércoles"
+    },
+    "date": {
+      "fr": "18 h 45",
+      "es": "18 h 45"
+    },
+    "description": {
+      "fr": "Tous les mercredis",
+      "es": "Todos los miércoles"
+    },
+    "banner": "/images/DONS.jpeg"
+  }
 ]

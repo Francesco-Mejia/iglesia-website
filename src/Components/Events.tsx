@@ -1,91 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import Slider from 'react-slick';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Reveal } from './Reveal';
+import { Localized, textOf } from '../localized';
 
-interface Event 
-{
-  title: string;
-  date: string;
-  description: string;
+interface EventItem {
+  title: Localized;
+  date: Localized;
+  description: Localized;
   banner: string;
 }
 
-export function Events ()
-{
-  const { t } = useTranslation();
-  const [events, setEvents] = useState<Event[]>([]);
+export function Events() {
+  const { t, i18n } = useTranslation();
+  const [events, setEvents] = useState<EventItem[]>([]);
 
   useEffect(() => {
-    const storedEvents = localStorage.getItem('events');
-    if (storedEvents) 
-    {
-      setEvents(JSON.parse(storedEvents));
-    } 
-    else 
-    {
-      fetch('/data/events.json')
-        .then(res => res.json())
-        .then(data => setEvents(data));
-    }
+    fetch('/data/events.json')
+      .then((res) => res.json())
+      .then((data) => setEvents(data));
   }, []);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 8000,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
-
   return (
-    <div className="events-container" id='eventos'>
-      <Container>
-        <Row>
-          <Col xs={12}>
-            <h2 className="text-center mb-4">{t('events.title')}</h2>
-            <div className="events-slider-container">
-              <Slider {...settings}>
-                {events.map((event, index) => (
-                  <div key={event.title} className="event-item">
-                    <img src={event.banner} alt={event.title} className="event-banner img-fluid" />
-                    <div className="event-details">
-                      <h3>{event.title}</h3>
-                      <p className="event-date">{event.date}</p>
-                      <p className="event-description">{event.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </Slider>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <Reveal id="eventos">
+      <div className="wrap">
+        <h2 className="t-stagger-line t-stagger-line--1">{t('events.title')}</h2>
+        <div className="event-grid reveal-photo">
+          {events.map((event, index) => {
+            const title = textOf(event.title, i18n.language);
+            return (
+              <article key={`${title}-${index}`} className="event-card">
+                <div className="frame">
+                  <img src={event.banner} alt={title} />
+                </div>
+                <h3>{title}</h3>
+                <p className="meta">{textOf(event.date, i18n.language)}</p>
+                <p>{textOf(event.description, i18n.language)}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </Reveal>
   );
-};
+}

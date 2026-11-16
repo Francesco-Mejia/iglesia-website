@@ -1,204 +1,240 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Modal, Container, Row, Col } from 'react-bootstrap';
+import { Reveal } from './Reveal';
 
-interface StreamSnippet {
+const channelId = 'UCnnolqv1eRbnz-XJDcGjpuw';
+const uploadsPlaylist = 'UUnnolqv1eRbnz-XJDcGjpuw';
+const channelUrl = `https://www.youtube.com/channel/${channelId}`;
+
+interface PastStream {
+  id: string;
   title: string;
-  thumbnails: {
-    high: {
-      url: string;
-    };
-  };
-  publishedAt: string;
 }
 
-interface StreamItem {
-  id: {
-    videoId: string;
-  };
-  snippet: StreamSnippet;
+interface YTPlayer {
+  destroy: () => void;
+  getPlaylist: () => string[] | null;
+  getVideoData: () => { video_id?: string; title?: string };
+  loadVideoById: (video: { videoId: string }) => void;
+}
+
+interface YTApi {
+  Player: new (element: HTMLElement, options: unknown) => YTPlayer;
+}
+
+declare global {
+  interface Window {
+    YT?: YTApi;
+    onYouTubeIframeAPIReady?: () => void;
+  }
+}
+
+function loadYouTubeApi(): Promise<void> {
+  if (window.YT?.Player) return Promise.resolve();
+  return new Promise((resolve) => {
+    const previous = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      previous?.();
+      resolve();
+    };
+    if (!document.getElementById('youtube-iframe-api')) {
+      const script = document.createElement('script');
+      script.id = 'youtube-iframe-api';
+      script.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(script);
+    }
+  });
+}
+
+function laterIds(player: YTPlayer): { ids: string[]; title: string } {
+  const ids = (player.getPlaylist() || []).filter(Boolean);
+  const data = player.getVideoData() || {};
+  const current = data.video_id;
+  const title = (data.title || '').replace(/\s+/g, ' ').trim();
+  let start = current ? ids.indexOf(current) : -1;
+  if (start < 0) start = 0;
+  return { ids: ids.slice(start + 1, start + 21), title };
 }
 
 export function LiveStream() {
   const { t } = useTranslation();
-  const [isLive, setIsLive] = useState(false);
-  const [pastStreams, setPastStreams] = useState<StreamItem[]>([]);
-  const [selectedVideo, setSelectedVideo] = useState<StreamItem | null>(null);
-  const [showModal, setShowModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [liveVideoId, setLiveVideoId] = useState<string | null>(null);
-  const channelId = 'UCnnolqv1eRbnz-XJDcGjpuw';
-  const [error, setError] = useState<string | null>(null);
-  const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
-  const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes en millisecondes
-  const [lastFetchTime, setLastFetchTime] = useState<number>(0);
+  const playerBoxRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<YTPlayer | null>(null);
+  const liveTitleRef = useRef(t('livestream.live'));
+  liveTitleRef.current = t('livestream.live');
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [past, setPast] = useState<PastStream[]>([]);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      setError(null);
+    const box = playerBoxRef.current;
+    if (!box) return undefined;
+    let cancelled = false;
+    let player: YTPlayer | null = null;
+    let listed = false;
+    let timer = 0;
+    const host = document.createElement('div');
+    box.appendChild(host);
 
-      if (!YOUTUBE_API_KEY) {
-        setError('La clé API YouTube n\'est pas configurée. Veuillez vérifier le fichier .env');
-        setIsLoading(false);
-        return;
-      }
-
-      const shouldFetch = !lastFetchTime || (Date.now() - lastFetchTime) > CACHE_DURATION;
-      if (!shouldFetch) {
-        setIsLoading(false);
-        return;
-      }
-
-      try {
-        // Vérifier le statut en direct
-        const liveResponse = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=live&type=video&key=${YOUTUBE_API_KEY}`
-        );
-        
-        if (!liveResponse.ok) {
-          throw new Error(`Erreur API YouTube (${liveResponse.status}): ${liveResponse.statusText}`);
+    const publish = (ready: YTPlayer, force: boolean) => {
+      if (listed || cancelled) return;
+      const { ids, title } = laterIds(ready);
+      if (!ids.length) return;
+      if ((!title || ids.length < 12) && !force) return;
+      listed = true;
+      window.clearInterval(timer);
+      Promise.all(ids.map(async (id) => {
+        let cardTitle = '';
+        try {
+          const url = `https://www.youtube.com/watch?v=${id}`;
+          const res = await fetch(`https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`);
+          if (res.ok) {
+            const data = await res.json();
+            cardTitle = typeof data.title === 'string' ? data.title : '';
+          }
+        } catch {
+          cardTitle = '';
         }
-        
-        const liveData = await liveResponse.json();
-        const isCurrentlyLive = liveData.items && liveData.items.length > 0;
-        const currentLiveVideoId = isCurrentlyLive ? liveData.items[0].id.videoId : null;
-        setLiveVideoId(currentLiveVideoId);
-        setIsLive(isCurrentlyLive);
-
-        // Récupérer les diffusions passées
-        const pastResponse = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=completed&type=video&order=date&maxResults=3&key=${YOUTUBE_API_KEY}`
-        );
-
-        if (!pastResponse.ok) {
-          throw new Error(`Erreur API YouTube (${pastResponse.status}): ${pastResponse.statusText}`);
+        return { id, title: cardTitle };
+      })).then((cards) => {
+        if (cancelled) return;
+        let from = 0;
+        if (title) {
+          while (from < cards.length && cards[from].title.replace(/\s+/g, ' ').trim() === title) from += 1;
         }
-
-        const pastData = await pastResponse.json();
-        setPastStreams(pastData.items || []);
-        setLastFetchTime(Date.now());
-      } catch (err) {
-        console.error('Erreur lors de la récupération des données:', err);
-        setError(err instanceof Error ? err.message : 'Une erreur est survenue lors de la récupération des données');
-      } finally {
-        setIsLoading(false);
-      }
+        setPast(cards.slice(from, from + 12));
+      });
     };
 
-    fetchData();
-  }, [channelId, YOUTUBE_API_KEY, lastFetchTime, CACHE_DURATION]);
+    loadYouTubeApi().then(() => {
+      if (cancelled || !window.YT?.Player) return;
+      player = new window.YT.Player(host, {
+        playerVars: {
+          listType: 'playlist',
+          list: uploadsPlaylist,
+          autoplay: 0,
+          rel: 0,
+          playsinline: 1,
+        },
+        events: {
+          onReady: (event: { target: YTPlayer }) => {
+            if (cancelled) return;
+            playerRef.current = event.target;
+            const frame = box.querySelector('iframe');
+            if (frame) frame.title = liveTitleRef.current;
+            publish(event.target, false);
+            let tries = 0;
+            timer = window.setInterval(() => {
+              tries += 1;
+              publish(event.target, tries >= 8);
+              if (listed || tries >= 8) window.clearInterval(timer);
+            }, 400);
+          },
+        },
+      });
+    });
 
-  const handleVideoClick = (video: StreamItem) => {
-    setSelectedVideo(video);
-    setShowModal(true);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+      playerRef.current = null;
+      try {
+        player?.destroy();
+      } catch {
+        host.remove();
+      }
+    };
+  }, []);
+
+  const updateArrows = () => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    setCanPrev(el.scrollLeft > 4);
+    setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedVideo(null);
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return undefined;
+    updateArrows();
+    el.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    return () => {
+      el.removeEventListener('scroll', updateArrows);
+      window.removeEventListener('resize', updateArrows);
+    };
+  }, [past]);
+
+  const scrollStreams = (direction: number) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollBy({ left: direction * el.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
   };
 
-  if (isLoading) {
-    return (
-      <div className="live-stream-container" id="transmisiones">
-        <Container>
-          <Row className="justify-content-center">
-            <Col xs={12} className="text-center">
-              <h3>{t('livestream.loading')}</h3>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="live-stream-container" id="transmisiones">
-        <Container>
-          <Row className="justify-content-center">
-            <Col xs={12} className="text-center">
-              <h3 className="text-danger">{error}</h3>
-              <p>{t('livestream.tryAgain')}</p>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
-  }
+  const play = (id: string) => {
+    playerRef.current?.loadVideoById({ videoId: id });
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    playerBoxRef.current?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+  };
 
   return (
-    <div className="live-stream-container" id="transmisiones">
-      <Container>
-        
-        {isLive && (
-          <Row className="justify-content-center mb-5">
-            <Col xs={12} className="position-relative">
-              <div className="live-indicator">
-                <span className="live-dot"></span>
-                {t('livestream.live')}
+    <Reveal id="transmisiones" className="is-band">
+      <div className="wrap">
+        <h2 className="t-stagger-line t-stagger-line--1">{t('livestream.title')}</h2>
+        <p>
+          <a className="text-link" href={channelUrl} target="_blank" rel="noopener noreferrer">
+            {t('livestream.channel')}
+          </a>
+        </p>
+        <div className="player" ref={playerBoxRef} />
+        {past.length > 0 && (
+          <>
+            <h3 className="subhead t-stagger-line t-stagger-line--2">{t('livestream.pastStreams')}</h3>
+            <div className="stream-rail">
+              <button
+                type="button"
+                className="stream-arrow"
+                aria-label={t('livestream.prev')}
+                disabled={!canPrev}
+                onClick={() => scrollStreams(-1)}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <div className="stream-scroller" ref={scrollerRef}>
+                {past.map((stream) => (
+                  <button
+                    key={stream.id}
+                    type="button"
+                    className="stream-card lift"
+                    onClick={() => play(stream.id)}
+                  >
+                    <span className="frame">
+                      <img src={`https://i.ytimg.com/vi/${stream.id}/hqdefault.jpg`} alt="" />
+                    </span>
+                    <span className="stream-title">{stream.title}</span>
+                    <span className="text-link">{t('livestream.watchNow')}</span>
+                  </button>
+                ))}
               </div>
-              <div className="ratio ratio-16x9">
-                <iframe
-                  src={`https://www.youtube.com/embed/${liveVideoId}?autoplay=1`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Live Stream"
-                />
-              </div>
-            </Col>
-          </Row>
-        )}
-
-        <Row className="justify-content-center">
-          <Col xs={12} className="text-center mb-4">
-            <h3>{t('livestream.pastStreams')}</h3>
-          </Col>
-          {pastStreams.length > 0 ? (
-            pastStreams.map((stream, index) => (
-              <Col key={index} xs={12} sm={6} md={4} className="mb-4">
-                <div className="past-stream-card h-100" onClick={() => handleVideoClick(stream)}>
-                  <img 
-                    src={stream.snippet.thumbnails.high.url} 
-                    alt={stream.snippet.title}
-                    className="past-stream-thumbnail img-fluid"
-                  />
-                  <div className="past-stream-info">
-                    <h4>{stream.snippet.title}</h4>
-                    <p>{new Date(stream.snippet.publishedAt).toLocaleDateString()}</p>
-                    <button className="watch-button">
-                      {t('livestream.watchNow')}
-                    </button>
-                  </div>
-                </div>
-              </Col>
-            ))
-          ) : (
-            <Col xs={12} className="text-center">
-              <p className="no-streams">{t('livestream.noPastStreams')}</p>
-            </Col>
-          )}
-        </Row>
-      </Container>
-
-      <Modal show={showModal} onHide={handleCloseModal} size="lg" centered>
-        <Modal.Header closeButton>
-          <Modal.Title>{selectedVideo?.snippet.title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {selectedVideo && (
-            <div className="ratio ratio-16x9">
-              <iframe
-                src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title={selectedVideo.snippet.title}
-              />
+              <button
+                type="button"
+                className="stream-arrow"
+                aria-label={t('livestream.next')}
+                disabled={!canNext}
+                onClick={() => scrollStreams(1)}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
             </div>
-          )}
-        </Modal.Body>
-      </Modal>
-    </div>
+          </>
+        )}
+      </div>
+    </Reveal>
   );
 }

@@ -1,62 +1,40 @@
 import React from 'react';
-import Slider from 'react-slick';
 import { useTranslation } from 'react-i18next';
+import { Reveal } from '../Components/Reveal';
+
+const photos = [
+  '/images/culto7.jpg',
+  '/images/culto8.jpg',
+  '/images/culto9.jpg',
+  '/images/DONS.jpeg',
+];
 
 export const Gallery: React.FC = () => {
   const { t } = useTranslation();
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-  };
-
-  const media = [
-    { src: '/images/logo_iglesia.jpg', description: 'Logo de notre église' },
-    { src: '/images/culto7.jpg', description: 'Moment de culte et adoration' },
-    { src: '/images/culto8.jpg', description: 'Célébration communautaire' },
-    { src: '/images/Les_difficultés.mp4', description: 'Vidéo sur les difficultés' },
-  ];
-
-  const isVideo = (path: string) => {
-    return path.toLowerCase().endsWith('.mp4');
-  };
+  const photoAlt = t('media.worship');
+  const videoTitle = t('media.video');
 
   return (
-    <div className="gallery-container">
-      <h1>{t('gallery.title')}</h1>
-      <div className="gallery-slider">
-        <Slider {...settings}>
-          {media.map((item, index) => (
-            <div key={index} className="media-item">
-              {isVideo(item.src) ? (
-                <video 
-                  controls 
-                  autoPlay={false}
-                  muted
-                  style={{ maxWidth: '100%', height: 'auto' }}
-                  title={item.description}
-                >
-                  <source src={item.src} type="video/mp4" />
-                  Votre navigateur ne supporte pas la lecture de vidéos.
-                </video>
-              ) : (
-                <img 
-                  src={item.src} 
-                  alt={item.description}
-                  aria-label={item.description}
-                />
-              )}
+    <div className="page-offset">
+      <Reveal immediate>
+        <div className="wrap">
+          <h1 className="t-stagger-line t-stagger-line--1">{t('gallery.title')}</h1>
+          <div className="gallery-grid reveal-photo">
+            {photos.map((src) => (
+              <div className="frame" key={src}>
+                <img src={src} alt={photoAlt} />
+              </div>
+            ))}
+            <div className="frame">
+              <video controls playsInline preload="metadata" title={videoTitle}>
+                <source src="/images/Les_difficultés.mp4" type="video/mp4" />
+              </video>
             </div>
-          ))}
-        </Slider>
-      </div>
+          </div>
+        </div>
+      </Reveal>
     </div>
   );
 };
 
-export default Gallery; 
+export default Gallery;
